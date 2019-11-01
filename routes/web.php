@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return '<h1>SEDANG PROGRESS</h1>';
 });
+Route::get('/home', 'HomeController@index');
