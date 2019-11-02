@@ -1,69 +1,35 @@
 /* Price Area css
 ============================================================================================ */
 .price_area{
-	background: #fafcff;
-	.price_inner{
-		background: #fff;
-		border-radius: 10px;
-		box-shadow: 0px 10px 30px 0px rgba(98, 71, 234, 0.1);
-		.col-lg-3{
-			&:last-child{
-				.price_item{
-					.price_text{
-						&:before{
-							display: none;
-						}
-					}
-				}
-			}
-		}
-	}
+	
+}
+.price_inner{
+	
 }
 .price_item{
-	border-top: 2px solid #fff;
-	.price_text{
-		padding-top: 75px;
-		padding-bottom: 75px;
-		padding-left: 45px;
-		position: relative;
-		&:before{
-			content: "";
-			width: 1px;
-			background: #eeeeee;
-			height: 336px;
-			position: absolute;
-			right: 0px;
-			bottom: 0px;
-		}
-		h3{
+	text-align: center;
+	border: 1px solid #eeeeee;
+	border-radius: 5px;
+	.price_head{
+		text-align: center;
+		background: #edf6ff;
+		padding: 35px 0px;
+		border-bottom: 1px solid #eeeeee;
+		h4{
 			font-size: 20px;
 			color: $dip;
-			margin-bottom: 12px;
+			margin-bottom: 0px;
 		}
-		h5{
-			font-size: 14px;
-			color: $pfont;
-			font-weight: 300;
-			font-family: $rob;
-			margin-bottom: 20px;
-		}
-		h2{
-			font-size: 36px;
-			color: $dip;
-			margin-bottom: 40px;
-			span{
-				font-weight: 300;
-				font-size: 14px;
-				font-family: $rob;
-				color: $pfont;
-			}
-		}
-		.list{
+	}
+	.price_body{
+		padding: 30px 0px;
+		ul{
 			li{
-				margin-bottom: 20px;
+				margin-bottom: 15px;
 				a{
+					font-size: 14px;
 					color: $pfont;
-					font-family: $open;
+					font-family: $rob;
 					font-weight: normal;
 				}
 				&:last-child{
@@ -72,36 +38,62 @@
 			}
 		}
 	}
-	.price_btn{
-		display: block;
-		text-align: center;
-		background: $baseColor;
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
-		line-height: 50px;
-		color: #fff;
-		font-family: $rob;
-		font-weight: 500;
-		font-size: 12px;
-		opacity: 0;
-		margin-bottom: -50px;
-	}
-	&:hover{
-		border-color: $baseColor;
-		.price_text{
-			h2{
-				color: $baseColor;
-				span{
-					color: $baseColor;
-				}
+	.price_footer{
+		max-width: 280px;
+		margin: 0px auto 40px;
+		background: #edf6ff;
+		border-radius: 5px;
+		padding-top: 35px;
+		padding-bottom: 40px;
+		h3{
+			color: $dip;
+			font-size: 72px;
+			.dlr{
+				font-size: 24px;
+				vertical-align: top;
+				padding-top: 14px;
+				display: inline-block;
+			}
+			.month{
+				font-size: 14px;
+				color: $pfont;
+				font-family: $rob;
+				display: inline-block;
+				text-align: left;
 			}
 		}
-		.price_btn{
-			opacity: 1;
+		.main_btn{
+			padding:0px 45px;
 		}
 	}
-	&:last-child{
-		
+	&:hover{
+		.price_head{
+			background-image: -moz-linear-gradient( 0deg, rgb(77,171,255) 0%, rgb(98,221,255) 100%);
+			background-image: -webkit-linear-gradient( 0deg, rgb(77,171,255) 0%, rgb(98,221,255) 100%);
+			background-image: -ms-linear-gradient( 0deg, rgb(77,171,255) 0%, rgb(98,221,255) 100%);
+			box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			h4{
+				color: #fff;
+			}
+		}
+		.price_footer{
+			background-image: -moz-linear-gradient( 0deg, rgb(77,171,255) 0%, rgb(98,221,255) 100%);
+			background-image: -webkit-linear-gradient( 0deg, rgb(77,171,255) 0%, rgb(98,221,255) 100%);
+			background-image: -ms-linear-gradient( 0deg, rgb(77,171,255) 0%, rgb(98,221,255) 100%);
+			box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+			h3{
+				color: #fff;
+				.month{
+					color: #fff;
+				}
+			}
+			.main_btn{
+				background: #fff;
+				color: $dip;
+			}
+		}
 	}
 }
 /* End Price Area css

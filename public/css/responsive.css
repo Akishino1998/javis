@@ -24,8 +24,16 @@
 	}
 	/* End Home Banner Area css
 	============================================================================================ */
-	.feature_item {
-		padding: 45px 10px 45px 15px;
+	.header_area .navbar .tickets_btn {
+		margin-left: 40px;
+	}
+	.home_banner_area .banner_inner .banner_content h2 br {
+		display: none;
+		font-size: 36px;
+	}
+	.home_banner_area .banner_inner .banner_content h2 {
+		font-size: 36px;
+		line-height: 45px;
 	}
 }
 
@@ -41,7 +49,7 @@
         margin-bottom: 23px;
     }
 	.header_area .navbar {
-		background: #fff;
+		background: #000;
 	}
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
 		opacity: 1;
@@ -63,7 +71,7 @@
 		display: block;
 		width: 25px;
 		height: 3px;
-		background: #E94997;
+		background: #fff;
 		margin: auto;
 		margin-bottom: 4px;
 		transition: all 400ms linear;
@@ -103,10 +111,19 @@
 		margin-right: 0px;
 	}
 	.header_area + section, .header_area + row, .header_area + div {
-		margin-top: 116px;
+		margin-top: 71px;
 	}
 	.home_banner_area .banner_inner .banner_content .banner_map_img {
 		display: none;
+	}
+	.header_area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
+		line-height: 40px;
+	}
+	.header_area.white_menu.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
+		line-height: 40px;
+	}
+	.header_area.white_menu .navbar .nav .nav-item .nav-link {
+		color: #222;
 	}
 	/* End Main Menu Area css
 	============================================================================================ */
@@ -147,35 +164,35 @@
 	}
 	/* Footer Area css
 	============================================================================================ */
-	.footer-area .col-sm-6{
+	.footer_area .col-sm-6{
 		margin-bottom: 30px;
+	}
+	.footer_area .footer_inner{
+		margin-bottom: -30px;
+	}
+	.news_widget {
+		padding-left: 0px;
 	}
 	/* End End Footer Area css
 	============================================================================================ */
-	.home_banner_area {
-		background-size: cover;
-		margin-bottom: 0px;
+	.home_banner_area .banner_inner .home_left_img {
+		display: none;
 	}
-	.feature_item{
-		margin-bottom: 30px;
+	.header_area .navbar .tickets_btn {
+		display: none;
 	}
-	.feature_inner{
+	.home_banner_area .banner_inner {
+		padding: 70px 0px 100px 0px;
+	}
+	.left_side_text {
+		margin-bottom: 50px;
+	}
+	.price_item {
+		max-width: 360px;
+		margin: 0px auto 30px; 
+	}
+	.price_inner{
 		margin-bottom: -30px;
-	}
-	.says_left {
-		margin-bottom: 30px;
-	}
-	.l_blog_item {
-		margin-bottom: 30px;
-	}
-	.l_blog_inner{
-		margin-bottom: -30px;
-	} 
-	.welcome_text{
-		margin-top: 50px;
-	}
-	.ab_single_text {
-		padding-left: 0px;
 	}
 }
 @media (max-width:767px){
@@ -222,20 +239,17 @@
 	}
 	/* End End Footer Area css
 	============================================================================================ */
-	.footer_area .container.box_1620{
-		width: 100%;
-		max-width: 100%;
-		padding: 0px;
-	}
-	.footer_inner .f_menu li {
-		margin-right: 18px;
-	}
-	.footer_inner{
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-	.question_inner .nav.nav-tabs a {
+	.made_life_inner .nav.nav-tabs li {
+		flex: 0 0 50%;
+		max-width: 50%;
 		margin-bottom: 15px;
+	}
+	.made_life_inner .nav.nav-tabs {
+		margin-bottom: -15px;
+	}
+	.made_life_area.made_white .left_side_text {
+		margin-bottom: 0px;
+		margin-top: 30px;
 	}
 }
 @media (max-width:600px){
@@ -252,12 +266,13 @@
 	============================================================================================ */
 	.home_banner_area .banner_inner .banner_content h2 {
 		font-size: 28px;
+		line-height: 38px;
 	}
 	.home_banner_area {
-		min-height: 500px;
+		min-height: 450px;
 	}
 	.home_banner_area .banner_inner {
-		min-height: 500px;
+		min-height: 450px;
 	}
 	.blog_banner .banner_inner .blog_b_text {
 		margin-top: 0px;
@@ -310,19 +325,9 @@
 	.pad_top {
 		padding-top: 70px;
 	}
-	.counter_area {
-		padding: 70px 0px 70px 0px;
+	.pad_btm {
+		padding-bottom: 70px;
 	}
-	.says_item {
-		margin-bottom: 30px;
-	}
-	.client_says_inner{
-		margin-bottom: -30px;
-	}
-	.single-footer-widget .sub-btn {
-		right: 0px;
-	}
-	
 }
 
 @media (max-width:480px){
@@ -356,34 +361,19 @@
 	.comments-area .thumb {
 		margin-right: 10px;
 	}
-	
 	/* End Blog Page Area css
 	============================================================================================ */
-	.home_banner_area {
-		min-height: 400px;
+	.testi_item .media .d-flex {
+		padding-right: 0px;
 	}
-	.home_banner_area .banner_inner {
-		min-height: 400px;
+	.testi_item .media .d-flex img {
+		width: auto;
+		margin-bottom: 15px;
 	}
-	.counter_inner .counter_item {
-		flex: 0 0 100%;
-		max-width: 100%;
-		text-align: center;
-	}
-	.l_blog_item .view_text a {
-		margin-right: 15px;
-	}
-	.question_inner .tab-content .tab-pane .card .card-header button {
-		padding: 10px 22px 10px 10px;
-		line-height: 30px;
-	}
-	.question_inner .tab-content .tab-pane .card .card-body {
-		padding-left: 10px;
-	}
-	.question_inner .tab-content .tab-pane .card .card-header button i {
-		right: 5px;
-	}
-	.question_inner .nav.nav-tabs a {
+	.testi_item .media{
 		display: block;
+	}
+	.banner_btn{
+		margin-bottom: 20px;
 	}
 }

@@ -87,6 +87,85 @@
 		time: 1000
 	});
 	
+	$(".skill_main").each(function() {
+        $(this).waypoint(function() {
+            var progressBar = $(".progress-bar");
+            progressBar.each(function(indx){
+                $(this).css("width", $(this).attr("aria-valuenow") + "%")
+            })
+        }, {
+            triggerOnce: true,
+            offset: 'bottom-in-view'
+
+        });
+    });
+	
+	
+	/*----------------------------------------------------*/
+    /*  Isotope Fillter js
+    /*----------------------------------------------------*/
+	function projects_isotope(){
+        if ( $('.projects_area').length ){
+            // Activate isotope in container
+			$(".projects_inner").imagesLoaded( function() {
+                $(".projects_inner").isotope({
+                    layoutMode: 'fitRows',
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear'
+                    }
+                }); 
+            });
+			
+            // Add isotope click function
+            $(".filter li").on('click',function(){
+                $(".filter li").removeClass("active");
+                $(this).addClass("active");
+
+                var selector = $(this).attr("data-filter");
+                $(".projects_inner").isotope({
+                    filter: selector,
+                    animationOptions: {
+                        duration: 450,
+                        easing: "linear",
+                        queue: false,
+                    }
+                });
+                return false;
+            });
+        }
+    }
+    projects_isotope();
+	
+	
+	/*----------------------------------------------------*/
+    /*  Testimonials Slider
+    /*----------------------------------------------------*/
+    function testimonials_slider(){
+        if ( $('.testi_slider').length ){
+            $('.testi_slider').owlCarousel({
+                loop:true,
+                margin: 30,
+                items: 2,
+                nav: false,
+                autoplay: true,
+                smartSpeed: 1500,
+                dots:false, 
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    768: {
+                        items: 2,
+                    },
+                }
+            })
+        }
+    }
+    testimonials_slider();
+	
+	
 	/*----------------------------------------------------*/
     /*  Testimonials Slider
     /*----------------------------------------------------*/
@@ -325,6 +404,46 @@
                     ]
                 }
             ]
+        });
+    }
+	
+	/*----------------------------------------------------*/
+    /*  Google map js
+    /*----------------------------------------------------*/
+     
+    if ( $('#mapBox2').length ){
+        var $lat = $('#mapBox2').data('lat');
+        var $lon = $('#mapBox2').data('lon');
+        var $zoom = $('#mapBox2').data('zoom');
+        var $marker = $('#mapBox2').data('marker');
+        var $info = $('#mapBox2').data('info');
+        var $markerLat = $('#mapBox2').data('mlat');
+        var $markerLon = $('#mapBox2').data('mlon');
+        var map = new GMaps({
+        el: '#mapBox2',
+        lat: $lat,
+        lng: $lon,
+        scrollwheel: false,
+        scaleControl: true,
+        streetViewControl: false,
+        panControl: true,
+        disableDoubleClickZoom: true,
+        mapTypeControl: false,
+        zoom: $zoom,
+            styles: [
+				{
+					"featureType": "administrative.country",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"visibility": "simplified"
+						},
+						{
+							"hue": "#ff0000"
+						}
+					]
+				}
+			]
         });
     }
 	

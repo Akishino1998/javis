@@ -1,3 +1,51 @@
+
+/* Latest Blog Area css
+============================================================================================ */
+//.latest_blog_area{
+//	
+//}
+//.latest_blog_inner{
+//	
+//}
+//.l_blog_item{
+//	.l_blog_img{
+//		
+//	}
+//	.l_blog_text{
+//		.date{
+//			margin-top: 24px;
+//			margin-bottom: 15px;
+//			a{
+//				color: $pfont;
+//				font-size: 12px;
+//				font-family: $rob;
+//			}
+//		}
+//		h4{
+//			font-size: 21px;
+//			color: $dip;
+//			margin-bottom: 20px;
+//			@include transition;
+//			font-family: $hee;
+//			font-weight: bold;
+//			text-transform: uppercase;
+//			max-width: 300px;
+//			&:hover{
+//				color: $baseColor;
+//			}
+//		}
+//		p{
+//			margin-bottom: 0px;
+//			font-size: 14px;
+//			font-family: $rob;
+//		}
+//	}
+//}
+/* End Latest Blog Area css
+============================================================================================ */
+
+
+
 /* Causes Area css
 ============================================================================================ */
 .causes_area{
@@ -100,7 +148,7 @@
 
 /*================= latest_blog_area css =============*/
 .latest_blog_area{
-    background: #f9f9ff;
+    
 }
 .single-recent-blog-post{
     margin-bottom: 30px;
@@ -207,7 +255,7 @@
     }
     &:hover{
         .categories_details{
-            background: rgba(250, 183, 0 , 0.85);
+            background: rgba(56, 152, 248, .85);
         }
     }
 }
@@ -317,7 +365,7 @@
                 padding-left: 20px;
                 border-radius: 45px;
                 z-index: 0;
-                background: $baseColor;
+				background: $baseColor;
                 @include placeholder{
                     color: #fff;
                 }
@@ -457,7 +505,7 @@
             }
         }
         .bbtns{
-            background: $baseColor;
+			background: $baseColor;
             color: #fff;
             font-size: 12px;
             line-height: 38px;
@@ -484,7 +532,7 @@
                     color: $dip;
                     font-size: 12px;
                     &:hover{
-                        background: $baseColor;
+						background: $baseColor;
                         color: #fff;
                     }
                 }
@@ -813,64 +861,3 @@
 
 
 /*============ End Blog Single Styles  =============*/
-
-
-
-/* Latest Blog Area css
-============================================================================================ */
-.latest_grid_blog_area{
-	
-}
-.l_blog_inner{
-	
-}
-.l_blog_item{
-	border: 1px solid #eeeeee;
-	border-radius: 10px;
-	padding: 60px 30px;
-	@include transition;
-	h6{
-		border-radius: 3px;
-		background: #ec9d5f;
-		display: inline-block;
-		color: #fff;
-		line-height: 30px;
-		font-weight: 300;
-		font-size: 12px;
-		padding: 0px 20px;
-		font-family: $rob;
-		margin-bottom: 20px;
-	}
-	h4{
-		color: $dip;
-		font-size: 20px;
-		line-height: 30px;
-		margin-bottom: 20px;
-		@include transition;
-	}
-	p{
-		margin-bottom: 25px;
-	}
-	.view_text{
-		a{
-			font-size: 14px;
-			color: #aaaaaa;
-			margin-right: 25px;
-			&:last-child{
-				margin-right: 0px;
-			}
-			i{
-				padding-right: 10px;
-			}
-		}	
-	}
-	&:hover{
-		box-shadow: 0px 10px 30px 0px rgba(98, 71, 234, 0.1);
-		border-color: #fff;
-		h4{
-			color: $baseColor;
-		}
-	}
-}
-/* End Latest Blog Area css
-============================================================================================ */

@@ -1,0 +1,28 @@
+@extends('layouts.master')
+
+@section('contect')
+    <h1>awipdjp</h1>
+    <table>
+        <tr>
+            <td>awd</td>
+        </tr>
+         <tr>
+            <td>awd</td>
+        </tr>
+         <tr>
+            <td>awd</td>
+        </tr>
+         <tr>
+            <td>awd</td>
+        </tr>
+         <tr>
+            <td>awd</td>
+        </tr>
+         <tr>
+            <td>awd</td>
+        </tr>
+         <tr>
+            <td>awd</td>
+        </tr>
+    </table>
+@endsection

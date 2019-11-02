@@ -1,3 +1,62 @@
+/* Home Map Area css
+============================================================================================ */
+.home_map_area{
+	position: relative;
+	.mapBox2{
+		min-height: 600px;
+	}
+	.home_details{
+		position: absolute;
+		right: 0px;
+		width: 100%;
+		z-index: 10;
+		top: 50%;
+		transform: translateY(-50%);
+		.box_home_details{
+			background: #fff;
+			max-width: 457px;
+			float: right;
+			width: 100%;
+			padding-left: 92px;
+			padding-right: 92px;
+			padding-top: 112px;
+			padding-bottom: 112px;
+			border-radius: 10px;
+			.media{
+				margin-bottom: 26px;
+				&:last-child{
+					margin-bottom: 0px;
+				}
+				.d-flex{
+					padding-right: 20px;
+					i{
+						font-size: 20px;
+						background: linear-gradient(to right, #2c28b1 0%, #9b5cf6 70%);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+					}
+				}
+				.media-body{
+					h4{
+						font-size: 14px;
+						color: $dip;
+						text-transform: uppercase;
+					}
+					p{
+						margin-bottom: 0px;
+					}
+				}
+			}
+		}
+	}
+}
+/* End Home Map Form Area css
+============================================================================================ */
+
+
+
+
+
 /* Reservation Form Area css
 ============================================================================================ */
 .reservation_form_area{
