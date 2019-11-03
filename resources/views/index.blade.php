@@ -2,7 +2,57 @@
 @section('title','HOME | Nyervisga?')
 @section('content')
 	
-
+{{-- CARD --}}
+<div class="fullscreen-menu-container js-menu-container">
+    <a class="menu-button js-menu-close">
+        <div class="menu-icon is-active">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </a>
+    <div class="fullscreen-menu">
+        <div class="fullscreen-menu__image-container"></div>
+        <h1 class="fullscreen-menu__title">Mau Servis Apa kak?</h1>
+        <nav class="fullscreen-menu__nav">
+            <ul>
+                <li>
+					<h3>Laptop</h3>
+                    <a href="/servis/1"> <img src="{{ asset('img/produk/laptop.png') }}" width="100"> </a>
+                </li>
+                <li>
+					<h3>iPad</h3>
+                    <a href="/servis/2"><img src="{{ asset('img/produk/ipad.png') }}" width="100"> </a>
+                </li>
+                <li>
+					<h3>Hp</h3>
+                    <a href="/servis/3"><img src="{{ asset('img/produk/hp.png') }}" width="100"> </a>
+                </li>
+                <li>
+					<h3>Komputer</h3>
+                    <a href="/servis/4"><img src="{{ asset('img/produk/komputer.png') }}" width="100"> </a>
+                </li>
+                <li>
+					<h3>Monitor</h3>
+                    <a href="/servis/5"><img src="{{ asset('img/produk/monitor.png') }}" width="100"> </a>
+				</li>
+				<li>
+					<h3>Printer</h3>
+                    <a href="/servis/6"><img src="{{ asset('img/produk/printer.png') }}" width="100"> </a>
+                </li>
+            </ul>
+        </nav>
+        <a target="_blank" href="https://twitter.com/matchboxhero10" class="social-button--twitter">
+            <i class="icon--twitter"></i>
+        </a>
+        <a target="_blank" href="#" class="social-button--facebook">
+            <i class="icon--facebook"></i>
+        </a>
+        <a target="_blank" href="#" class="social-button--pintrest">
+            <i class="icon--pintrest"></i>
+        </a>
+    </div>
+</div>
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
             <div class="banner_inner">
@@ -10,15 +60,15 @@
 					<div class="row">
 						<div class="col-lg-5">
 							<div class="banner_content">
-								<h2>Servis?<br />Gak Pake Ribet </h2>
-								<p>Gak punya banyak waktu? Servis di sini aja. <i>Pick-up and deliver</i> elektronik untuk setiap servis demi kenyamanan dan efesiensi waktu anda. </p>
-								<a class="banner_btn" href="/servis">Mulai Servis</a>
+								<h2>Servis Gedget?<br />JAVIS AJA! </h2>
+								<p>Gak punya banyak waktu untuk servis hp?<br/><b>JAVIS</b> melayani antar-jemput elektronik yang akan di servis, lho!. </p>
+								<a class="banner_btn js-menu-button" >Mulai Servis</a>
 								{{-- <a class="banner_btn2" href="#">Download</a> --}}
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="home_left_img">
-								<img class="img-fluid" src="img/banner/home-left-1.png" alt="">
+								<img src="img/hero_3.png" alt="" width="600" height="400">
 							</div>
 						</div>
 					</div>
@@ -445,4 +495,45 @@
 		@endif
 	}
 	@endif
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+
+function openMenu() {
+		$('.js-menu-container').addClass('is-open'); // Find element with the class 'js-menu-container' and apply an additional class of 'is-open'
+	}
+
+
+	function closeMenu() {
+		$('.js-menu-container').removeClass('is-open'); // Find element with the class 'js-menu-container' and remove the class 'is-open'
+	}
+
+// Document Ready
+
+	jQuery(document).ready(function($){ // When everything has finished loading
+
+		$('.js-menu-button').click(function(){ // When the element with the class 'js-menu-button' is clicked
+			openMenu(); // Run the openMenu function
+		});
+
+		$('.js-menu-close').click(function(){ // When the element with the class 'js-menu-close' is clicked
+			closeMenu(); // Run the closeMenu function
+		});
+
+	});
+
+// Keyboard Accessibility
+
+	jQuery(document).keyup(function(e) { // Listen for keyboard presses
+
+		if (e.keyCode === 27) { // 'Esc' key
+
+			if ($('.js-menu-container').hasClass('is-open')) { // If the menu is open close it
+				closeMenu(); // Run the closeMenu function
+			}
+
+		}
+
+	});
+</script>
 @endsection
