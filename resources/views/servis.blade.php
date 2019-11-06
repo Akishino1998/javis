@@ -1,404 +1,310 @@
 @extends('layouts.master')
-@section('title','Servis | Nyervisga')
+@section('title','HOME | Nyervisga?')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/multipicker.css') }}">
 	<style>
-	.wrapper{
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	width: 20px;
-	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
-	-webkit-transform: translateY(-50%);
-	        transform: translateY(-50%);
+	#container {
+  width: 720px;
+  height: 550px;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #b3bead;
+  background: -moz-linear-gradient(45deg, #b3bead 0%, #dfe5d7 60%, #fcfff4 100%);
+  background: -webkit-linear-gradient(45deg, #b3bead 0%, #dfe5d7 60%, #fcfff4 100%);
+  background: linear-gradient(45deg, #b3bead 0%, #dfe5d7 60%, #fcfff4 100%);
 }
 
-.switch_box{
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	max-width: 50px;
-	min-width: 50px;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
+#info {
+  width: 52%;
+  height: 550px;
+  float: left;
+  background: linear-gradient(145deg, rgba(124,207,255,1) 46%, rgba(48,152,212,1) 74%);
 }
-
-/* Switch 1 Specific Styles Start */
-
-.box_1{
-	background: #fff;
-}
-
-input[type="checkbox"].switch_1{
-	font-size: 10px;
-	-webkit-appearance: none;
-	   -moz-appearance: none;
-	        appearance: none;
-	width: 3.5em;
-	height: 1.5em;
-	background: #ddd;
-	border-radius: 3em;
-	position: relative;
-	cursor: pointer;
-	outline: none;
-	-webkit-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-  }
+#info #product {
+  width: 200px;
+  margin-top: 100px;
   
-  input[type="checkbox"].switch_1:checked{
-	background: #0ebeff;
-  }
-  
-  input[type="checkbox"].switch_1:after{
-	position: absolute;
-	content: "";
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 50%;
-	background: #fff;
-	-webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
-	        box-shadow: 0 0 .25em rgba(0,0,0,.3);
-	-webkit-transform: scale(.7);
-	        transform: scale(.7);
-	left: 0;
-	-webkit-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-  }
-  
-  input[type="checkbox"].switch_1:checked:after{
-	left: calc(100% - 1.5em);
-  }
-	
-/* Switch 1 Specific Style End */
-
-
-
-	.banner_content{
-		top: 40px;
-	}
-	.tab-content{
-		/* display: none; */
-	}
-	.group 			  { 
-  position:relative; 
-  margin-bottom:45px; 
 }
-input 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:100%;
-  border:none;
-  border-bottom:1px solid #757575;
+#info p {
+  width: 100%;
+  text-align: center;
+  line-height: 1.5em;
+  letter-spacing: 1px;
 }
-input:focus 		{ outline:none; }
-
-/* LABEL ======================================= */
-label 				 {
-  color:#999; 
-  font-size:18px;
-  font-weight:normal;
-  position:absolute;
-  pointer-events:none;
-  left:5px;
-  top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+#info #price {
+  width: 50%;
+  margin: 0 auto;
+  letter-spacing: 1px;
+}
+#info #price h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  color: #000;
+  padding-top: 10px;
 }
 
-/* active state */
-input:focus ~ label, input:valid ~ label 		{
-  top:-20px;
-  font-size:14px;
-  color:#33ccff;
+#payment {
+  width: 40%;
+  float: right;
+  padding: 95px 50px 25px 0;
 }
 
-/* BOTTOM BARS ================================= */
-.bar 	{ position:relative; display:block; width:300px; }
-.bar:before, .bar:after 	{
-  content:'';
-  height:2px; 
-  width:0;
-  bottom:1px; 
-  position:absolute;
-  background:#33ccff; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+#checkout {
+  width: 100%;
+}
+#checkout input {
+  margin-bottom: 15px;
+}
+#checkout select {
+  margin-bottom: 15px;
+}
+#checkout label {
+  float: left;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.6em;
+  padding: 0 0 5px 10px;
+}
+#checkout #cvc-label {
+  margin-left: 25px;
+}
+#checkout .card {
+  width: 29%;
+  margin: 0 10% 25px 10%;
+  border: none;
+  background: none;
+  height: 50px;
+  cursor: pointer;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+#checkout .card:focus {
+  -webkit-filter: none;
+  filter: none;
+}
+#checkout #visa {
+  background-image: url("http://enwaara.se/codepen/visa.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+#checkout #mastercard {
+  background-image: url("http://enwaara.se/codepen/mastercard.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 118%;
+}
+#checkout #cardnumber, #checkout #cardholder, #checkout #cvc {
+  width: 100%;
+  background: none;
+  border: 1px solid #6C7A89;
+  padding: 8px 19px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+}
+#checkout #cardnumber:focus, #checkout #cardholder:focus, #checkout #cvc:focus {
+  border: 1px solid #00b894;
+}
+#checkout ::-webkit-input-placeholder {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: #BDC3C7;
+}
+#checkout #cardnumber {
+}
+#checkout #cardnumber::-webkit-input-placeholder {
+  font-size: 1em;
+}
+#checkout #left {
+  width: 41%;
+  border: 1px solid #6C7A89;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+  padding: 3px 5px;
+  float: left;
+}
+#checkout #left #month, #checkout #left #year {
+  background: none;
+  border: none;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  float: left;
+  font-size: 0.8em;
+  letter-spacing: 3px;
+  color: #BDC3C7;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+#checkout #left #month option, #checkout #left #year option {
+  background: #ECECEC;
+}
+#checkout #left p {
+  float: left;
+  padding-top: 2px;
+  font-size: 1.2em;
+  color: #BDC3C7;
+}
+#checkout #cvc {
+  width: 48%;
+  float: left;
+  margin-left: 11%;
+}
+#checkout .btn {
+  background: #00b894;
+  border: none;
+  width: 100%;
+  padding: 12px 10px 10px 10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #ECECEC;
+  cursor: pointer;
+}
+#checkout .btn:hover {
+  background: #16A085;
 }
 
-/* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:185%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
-}
-
-/* active state */
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-	from { background:#33ccff; }
-  to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-	from { background:#33ccff; }
-  to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-	from { background:#33ccff; }
-  to 	{ width:0; background:transparent; }
-}
 </style>
-
         <!--================Home Banner Area =================-->
-        <section class="banner_area">
-            <div class="banner_inner d-flex align-items-center">
-            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <section class="home_banner_area">
+            <div class="banner_inner">
 				<div class="container">
 					<div class="row">
-						<div class="col-4 text-banner">
-							<div class="banner_content text-center">
-								<h2>PILIH ELEKTRONIKMU</h2>
-								<div class="page_link">
-									<p>Pilih elektronik yang akan kamu servis, ya</p>
-								</div>
-							</div>
+						<div class="col-lg-2">
+							
+						</div>
+						<div class="col-lg-8">
+								<div id="wrapper">
+										<div id="container">
+									  
+										  <div id="info">
+											@foreach ($refElektronik as $item)
+												@if ($item->id_ref_elektronik == $id)
+												<center><img id="product" src="{{ asset('img/produk') }}/{{ $item->gambar }}"/>	</center>
+												<div id="price">
+									  
+														<h2>SERVIS {{ $item->jenis_elektronik }}</h2>
+											
+												</div>
+												@endif
+												
+											@endforeach
+									  
+											
+										  </div>
+									  
+										  <div id="payment">
+									  
+											<form class="formServis" id="checkout" method="POST" action="/servis-masuk">
+									  
+												{{-- <input class="card" id="visa" type="button1" name="card1" value="">
+												<input class="card" id="mastercard" type="button2" name="card2" value=""> --}}
+												
+												<label>Merk</label>
+												<select name="merk" id="cardnumber" requierd="true" pattern="" >
+													@foreach ($refMerk as $items)
+														@if ($items->id_ref_elektronik == $id)
+															<option value="{{ $items->id_merk }}">{{ $items->nama_merk }}</option>	
+														@endif
+													@endforeach
+												</select>
+
+												<label>Type HP/No. Seri</label>
+												<div class="type">
+													<select name="type" id="cardholder" requierd="true" pattern="">
+														<option value="">Pilih Merk Terlebih Dahulu</option>
+													</select>
+												</div>
+												
+												<center>
+													<ul id="days">
+														<li style="width:110px;font-size:15px">Jemput</li>
+														<li style="width:110px;font-size:15px">Antar</li>
+													</ul>
+												</center>
+											  
+											  
+									  
+											  <input class="btn" type="submit" name="purchase" value="Purchase">
+											</form>
+										  </div>
+									  
+										</div>
+									  </div>
 						</div>
 					</div>
 				</div>
-			</div>
-			
+            </div>
         </section>
-		<!--================End Home Banner Area =================-->
+@endsection      
+	
+@section('jquery')
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	{{-- <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script> --}}
+	<script type="text/javascript" src="{{ asset('js/multipicker.js') }}"></script>
+
+<script>
+$("#days").multiPicker({ selector : "li" });
+
+$('#cardnumber').change(function(){
+	$id = $('#cardnumber').val();
+	$.get('/getType/'+$id, function(data){
+		$( ".type" ).empty();
+		$('.type').append(data);
+		console.log(data);
 		
-
-		
-
-		
-        
-        <!--================Made Life Area =================-->
-        <section class="made_life_area p_120">
-        	<div class="container">
-        		<div class="made_life_inner">
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						
-						@foreach ($data as $datas)
-							<li class="nav-item">
-								<a class="nav-link" id="{{ $datas->nama_elektronik }}-tab" data-toggle="tab" href="#{{ $datas->nama_elektronik }}" role="tab" aria-controls="{{ $datas->nama_elektronik }}" aria-selected="true">{{ $datas->nama_elektronik }}</a>
-							</li>
-						@endforeach
-					</ul>
-					<div class="tab-content" id="myTabContent">
-					@foreach ($data as $datas)
-						
-							<div class="tab-pane fade" id="{{ $datas->nama_elektronik }}" role="tabpanel" aria-labelledby="{{ $datas->nama_elektronik }}-tab">
-								<div class="row made_life_text">
-									<div class="col-lg-6">
-										<div class="left_side_text">
-											<h3>Servis {{ $datas->nama_elektronik }}</h3>
-											<h6></h6>
-											{{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p> --}}
-											<form action="/servis" method="post" class="form-servis{{ $datas->id_elektronik }}">
-												<div class="group">      
-													<input type="text" required name="merk">
-													<span class="highlight"></span>
-													<span class="bar"></span>
-													<label>Merk</label>
-												</div>
-												<div class="group">      
-													<input type="text" required name="seri">
-													<span class="highlight"></span>
-													<span class="bar"></span>
-													<label>Seri</label>
-												</div>
-												<div class="group">      
-													<input type="text" required name="kerusakan">
-													<span class="highlight"></span>
-													<span class="bar"></span>
-													<label>Kerusakan</label>
-												</div>
-												<div class="group">      
-													<input type="text" required name="penyebab">
-													<span class="highlight"></span>
-													<span class="bar"></span>
-													<label>Penyebab</label>
-												</div>
-												<div class="group">      
-													<input type="text" name="catatan" value="Catatan Tambahan">
-													<span class="highlight"></span>
-													<span class="bar"></span>
-													<label>Catatan</label>
-												</div>
-												<div class="container">
-													<div class="row">
-														<div class="col-6">
-															<div class="wrapper">
-																<div class="switch_box box_1">
-																	<label for="switchbox">Jemput</label>
-																	<input type="checkbox" class="switch_1" id="switchbox" name="jemput">
-																</div>
-															</div>
-														</div>
-														<div class="col-6">
-															<div class="wrapper">
-																<div class="switch_box box_1">
-																	<label for="switchbox">Antar</label>
-																	<input type="checkbox" class="switch_1" id="switchbox" name="antar">
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<input type="hidden" value="{{ $datas->id_elektronik }}" name="id_elektronik">
-												<button type="submit" class="main_btn">Mulai Servis</button>
-												@csrf
-											</form>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="chart_img">
-											<img class="img-fluid" src="img/produk/{{ $datas->foto}}" alt="" width="400" height="400">
-										</div>
-									</div>
-								</div>
-							</div>
-						
-					@endforeach
-						</div>
-					</div>
-        		</div>
-        	</div>
-        </section>
-			<!--================End Made Life Area =================-->
-			
-			
-	@endsection
-
-	@section('jquery')
-		<script>
-	var slideIndex = [1,1];
-	var slideId = ["mySlides1"]
-	showSlides(1, 0);
-	showSlides(1, 1);
-
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
-
-function showSlides(n, no) {
-  	var i;
-  	var x = document.getElementsByClassName(slideId[no]);
-  	if (n > x.length) {slideIndex[no] = 1}    
-  	if (n < 1) {slideIndex[no] = x.length}
-  	for (i = 0; i < x.length; i++) {
-    	x[i].style.display = "none";  
-	  }
-	  
-	  x[slideIndex[no]-1].style.display = "block"; 
-	  console.log(slideIndex[no]); 
-}
-
+	});
+	
+});
 
 </script>
 <script>
-    document.querySelector('.form-servis1').addEventListener('submit', function(e) {
-      var form = this;
-      e.preventDefault();
-      swal({
-        title: "Sudah Yakin?",
-        text: "Pastikan data yang kamu input sudah benar, ya!",
-        icon: "warning",
-        buttons: [
-          'Aku mau cek ulang.',
-          'Iya, aku yakin!'
-        ],
-        // dangerMode: true,
-      }).then(function(isConfirm) {
-        if (isConfirm) {
-          swal({
-            title: 'Data Tersimpan',
-            text: 'Sukses Disimpan kakak >_<',
-            icon: 'success'
-          }).then(function() {
-			form.submit();
-          });
-        } 
-      });
-    });
-</script>
-<script>
-    document.querySelector('.form-servis2').addEventListener('submit', function(e) {
-      var form = this;
-      e.preventDefault();
-      swal({
-        title: "Sudah Yakin?",
-        text: "Pastikan data yang kamu input sudah benar, ya!",
-        icon: "warning",
-        buttons: [
-          'Aku mau cek ulang.',
-          'Iya, aku yakin!'
-        ],
-        // dangerMode: true,
-      }).then(function(isConfirm) {
-        if (isConfirm) {
-          swal({
-            title: 'Data Tersimpan',
-            text: 'Sukses Disimpan kakak >_<',
-            icon: 'success'
-          }).then(function() {
-			form.submit();
-          });
-        } 
-      });
-    });
-</script>
-<script>
-    document.querySelector('.form-servis3').addEventListener('submit', function(e) {
-      var form = this;
-      e.preventDefault();
-      swal({
-        title: "Sudah Yakin?",
-        text: "Pastikan data yang kamu input sudah benar, ya!",
-        icon: "warning",
-        buttons: [
-          'Aku mau cek ulang.',
-          'Iya, aku yakin!'
-        ],
-        // dangerMode: true,
-      }).then(function(isConfirm) {
-        if (isConfirm) {
-          swal({
-            title: 'Data Tersimpan',
-            text: 'Sukses Disimpan kakak >_<',
-            icon: 'success'
-          }).then(function() {
-			form.submit();
-          });
-        } 
-      });
-    });
-</script>
+		document.querySelector('.formServis').addEventListener('submit', function(e) {
+		  var form = this;
+		  e.preventDefault();
+		  swal({
+			title: "Sudah Yakin?",
+			text: "Pastikan data yang kamu input sudah benar, ya!",
+			icon: "warning",
+			buttons: [
+			  'Aku mau cek ulang.',
+			  'Iya, aku yakin!'
+			],
+			// dangerMode: true,
+		  }).then(function(isConfirm) {
+			if (isConfirm) {
+			  swal({
+				title: 'Data Tersimpan',
+				text: 'Sukses Disimpan kakak >_<',
+				icon: 'success'
+			  }).then(function() {
+				form.submit();
+			  });
+			} 
+		  });
+		});
+	</script>
+	<script>
+		// $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+	</script>
 @endsection

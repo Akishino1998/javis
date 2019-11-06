@@ -14,7 +14,8 @@
         <link rel="stylesheet" href="{{ asset('vendors/lightbox/simpleLightbox.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/nice-select/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/animate-css/animate.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendors/flaticon/flaticon.css') }}">
+		<link rel="stylesheet" href="{{ asset('vendors/flaticon/flaticon.css') }}">
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
         <!-- main css -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
@@ -132,7 +133,8 @@
 		{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script> --}}
         <script src="{{ asset('js/gmaps.min.js') }}"></script>
 		<script src="{{ asset('js/theme.js') }}"></script>
-    
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+		<script src="{{ asset('js/jqBootstrapValidation.js') }}"></script>
     </body>
 </html>
 @yield('jquery')

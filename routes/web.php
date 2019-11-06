@@ -18,8 +18,11 @@ Route::get('/', function () {
 
 //home 
 Route::get('/home','HomeController@index');
+Route::get('/servis/{id}','HomeController@servis');
 
 
+//method
+Route::get('/getType/{id}', 'MethodController@getType');
 Route::get('/keluar', function () {
     session()->flush();
     return redirect('/home');

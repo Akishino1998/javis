@@ -16,41 +16,15 @@
         <h1 class="fullscreen-menu__title">Mau Servis Apa kak?</h1>
         <nav class="fullscreen-menu__nav">
             <ul>
-                <li>
-					<h3>Laptop</h3>
-                    <a href="/servis/1"> <img src="{{ asset('img/produk/laptop.png') }}" width="100"> </a>
-                </li>
-                <li>
-					<h3>iPad</h3>
-                    <a href="/servis/2"><img src="{{ asset('img/produk/ipad.png') }}" width="100"> </a>
-                </li>
-                <li>
-					<h3>Hp</h3>
-                    <a href="/servis/3"><img src="{{ asset('img/produk/hp.png') }}" width="100"> </a>
-                </li>
-                <li>
-					<h3>Komputer</h3>
-                    <a href="/servis/4"><img src="{{ asset('img/produk/komputer.png') }}" width="100"> </a>
-                </li>
-                <li>
-					<h3>Monitor</h3>
-                    <a href="/servis/5"><img src="{{ asset('img/produk/monitor.png') }}" width="100"> </a>
-				</li>
-				<li>
-					<h3>Printer</h3>
-                    <a href="/servis/6"><img src="{{ asset('img/produk/printer.png') }}" width="100"> </a>
-                </li>
+				@foreach ($refElektronik as $items)
+					<li>
+						<h3>{{ $items->jenis_elektronik }}</h3>
+						<a href="/servis/{{ $items->id_ref_elektronik }}"> <img src="{{ asset('img/produk') }}/{{ $items->gambar }}" width="100"> </a>
+					</li>
+				@endforeach
+                
             </ul>
         </nav>
-        <a target="_blank" href="https://twitter.com/matchboxhero10" class="social-button--twitter">
-            <i class="icon--twitter"></i>
-        </a>
-        <a target="_blank" href="#" class="social-button--facebook">
-            <i class="icon--facebook"></i>
-        </a>
-        <a target="_blank" href="#" class="social-button--pintrest">
-            <i class="icon--pintrest"></i>
-        </a>
     </div>
 </div>
         <!--================Home Banner Area =================-->
