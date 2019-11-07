@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Set Lokasi \ Nyervisga?')
+@section('title','HOME | Nyervisga?')
 @section('content')
 	<style>
          #mapBox1 {
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="no_hp">No. HP</label>
-                                        <input type="text" class="form-control" id="no_hp" name="no_hp_penerima" placeholder="Nomor Hp" value="{{ $shares->no_hp }}">
+                                        <input type="text" class="form-control" id="no_hp" name="no_hp_penerima" placeholder="Nomor Hp" value="{{ $data_pribadi->no_hp }}">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" value="submit" class="btn submit_btn">Simpan dan lanjutkan</button>    

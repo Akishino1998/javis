@@ -19,4 +19,15 @@ class HomeController extends Controller
         $refType = RefType::all();
         return view('servis',compact('refElektronik','id', 'refMerk','refType'));
     }
+    public function servisMasuk(Request $req){
+        $merk = $req->merk;
+        $type = $req->type;
+        $jemput = $req->jemput;
+        $antar = $req->antar;
+        if($jemput == "1" || $antar == "1"){
+            return view('set_lokasi');
+        }else{
+            return "sukses";
+        }
+    }
 }

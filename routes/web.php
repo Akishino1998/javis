@@ -19,7 +19,7 @@ Route::get('/', function () {
 //home 
 Route::get('/home','HomeController@index');
 Route::get('/servis/{id}','HomeController@servis');
-
+Route::post('/servis','HomeController@servisMasuk');
 
 //method
 Route::get('/getType/{id}', 'MethodController@getType');
