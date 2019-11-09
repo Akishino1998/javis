@@ -40,6 +40,7 @@
 												
 												<label>Merk</label>
 												<select name="merk" id="cardnumber" requierd="true" pattern="" >
+													<option value="1">---</option>
 													@foreach ($refMerk as $items)
 														@if ($items->id_ref_elektronik == $id)
 															<option value="{{ $items->id_merk }}">{{ $items->nama_merk }}</option>	
@@ -76,7 +77,7 @@
 												</center>
 											  
 											  
-									  
+												<input type="hidden" name="id_ref_elektronik" value="{{ $id }}">
 											  <input class="btn" type="submit" name="purchase" value="Purchase">
 											  @csrf
 											</form>

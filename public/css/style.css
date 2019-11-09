@@ -299,8 +299,9 @@ button:focus {
 ============================================================================================ */
 .home_banner_area {
   z-index: 1;
-  background: rgb(124,207,255);
-  background: linear-gradient(145deg, rgba(124,207,255,1) 46%, rgba(48,152,212,1) 74%, rgba(233,73,151,1) 100%);
+  background: #007ACC;
+  /* background: rgb(124,207,255); */
+  /* background: linear-gradient(145deg, rgba(124,207,255,1) 46%, rgba(48,152,212,1) 74%, rgba(233,73,151,1) 100%); */
 }
   .home_banner_area .banner_inner {
     width: 100%; }

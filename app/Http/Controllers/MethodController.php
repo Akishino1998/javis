@@ -10,7 +10,7 @@ class MethodController extends Controller
     function getType($id){
         $banyakRef = RefType::all()->where('id_merk',$id)->COUNT();
         $refType = RefType::all()->where('id_merk',$id);
-        $text = '<select name="type" id="cardholder" requierd="true" pattern="">';
+        $text = '<select name="type" id="cardholder" requierd="true" pattern=""><option>----</option>';
         foreach($refType as $item){
             $text = $text.'<option value="'.$item->id_detail_merk.'">'.$item->type.'</option>	';
         }

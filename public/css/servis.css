@@ -19,7 +19,8 @@
   width: 52%;
   height: 550px;
   float: left;
-  background: linear-gradient(145deg, rgba(124,207,255,1) 46%, rgba(48,152,212,1) 74%);
+  background: #ffa64d;
+  /* background: linear-gradient(145deg, rgba(124,207,255,1) 46%, rgba(48,152,212,1) 74%); */
 }
 #info #product {
   width: 200px;
