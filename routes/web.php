@@ -36,3 +36,6 @@ Route::get('/keluar', function () {
 //admin
 Route::get('/admin','AdminController@index');
 Route::get('/admin/daftar-harga','AdminController@daftar_harga');
+Route::get('/admin/daftar-harga/{id_elektronik}','AdminController@daftarHargaFilterElektronik');
+
+Route::get('/admin/addHargaServis','AdminController@tambahDataHargaServis');
