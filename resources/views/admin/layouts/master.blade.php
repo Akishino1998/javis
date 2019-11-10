@@ -1,218 +1,158 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-<head>
+<html class="no-js h-100" lang="en">
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> @yield('title') </title>
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('logo/logonyervisga.png') }}" type="image/png">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-
-   <style>
-    #weatherWidget .currentDesc {
-        color: #ffffff!important;
-    }
-        .traffic-chart {
-            min-height: 335px;
-        }
-        #flotPie1  {
-            height: 150px;
-        }
-        #flotPie1 td {
-            padding:3px;
-        }
-        #flotPie1 table {
-            top: 20px!important;
-            right: -10px!important;
-        }
-        .chart-container {
-            display: table;
-            min-width: 270px ;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        #flotLine5  {
-             height: 105px;
-        }
-
-        #flotBarChart {
-            height: 150px;
-        }
-        #cellPaiChart{
-            height: 160px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Left Panel -->
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/admin/dasboard"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
-                    </li>
-                    <li class="menu-title">Servis</li><!-- /.menu-title -->
-                    <li>
-                        <a href="/admin/servis-pending"> <i class="menu-icon fa fa-refresh "></i>Pending</a>
-                    </li>
-                    <li >
-                        <a href="/admin/servis-penjemputan"> <i class="menu-icon fa fa-truck"></i>Penjemputan</a>
-                    </li>
-                    <li>
-                        <a href="/admin/servis-masuk" > <i class="menu-icon fa fa-check"></i>Masuk</a>
-                    </li>
-                    <li >
-                        <a href="/admin/servis-proses"> <i class="menu-icon fa fa-wrench"></i>Proses</a>
-                    </li>
-                    <li>
-                        <a href="/admin/servis-pengantaran"> <i class="menu-icon fa fa-check-circle"></i>Pengantaran</a>
-                    </li>
-                    <li>
-                        <a href="/admin/servis-selesai"> <i class="menu-icon fa fa-check-circle"></i>Selesai</a>
-                    </li>
-                    <li>
-                        <a href="/admin/servis-calcel"> <i class="menu-icon fa fa-check-circle"></i>Calcel</a>
-                    </li>
-                    <li class="menu-title">Elektronik</li><!-- /.menu-title -->
-                    <li>
-                        <a href="/admin/add-elektronik"> <i class="menu-icon fa fa-tasks"></i>Elektronik</a>
-                    </li>
-                    <li class="menu-title">Akun</li><!-- /.menu-title -->
-                    <li>
-                        <a href="/admin/user-account"> <i class="menu-icon fa fa-tasks"></i>User</a>
-                    </li>
-                    <li>
-                        <a href="/admin/admin-account"> <i class="menu-icon fa fa-tasks"></i>Admin</a>
-                    </li>
-                    <li>
-                        <a href="/admin/admin-account"> <i class="menu-icon fa fa-tasks"></i>Kurir</a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
-    </aside>
-    <!-- /#left-panel -->
-    <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
-        <!-- Header-->
-        <header id="header" class="header">
-            <div class="top-left">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/admin/dasboard"><img src="{{ asset('logo/textnyervisga.png') }}" alt="Logo" width="150"></a>
-                    {{-- <a class="navbar-brand " href="./"><img src="../images/logo2.png" alt="Logo"></a> --}}
-                    {{-- <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> --}}
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Admin Service Javis</title>
+    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{{ asset('style_admin/styles/shards-dashboards.1.1.0.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('style_admin/styles/extras.1.1.0.min.css') }}">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body class="h-100">
+    <div class="container-fluid"> 
+      <div class="row">
+        <!-- Main Sidebar -->
+        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{ asset('style_admin/images/shards-dashboards-logo.svg') }}" alt="Shards Dashboard">
+                  <span class="d-none d-md-inline ml-1">Admin Javis</span>
                 </div>
-            </div>
-            <div class="top-right">
-                <div class="header-menu">
-                    {{-- <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
-                        <div class="form-inline">
-                            <form class="search-form" action="admin/search" method="POST">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                                <button class="search-close"><i class="fa fa-close"></i></button>
-                                @csrf
-                            </form>
-                        </div>
-                    </div> --}}
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-circle-o fa-2x"></i>
-                        </a>
-
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/admin/biodata"><i class="fa fa- user"></i>Profil</a>
-                            <a class="nav-link" href="/admin/logout"><i class="fa fa-power -off"></i>Logout</a>
-                        </div>
-                    </div>
-
+              </a>
+              <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                <i class="material-icons">&#xE5C4;</i>
+              </a>
+            </nav>
+          </div>
+          <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+            <div class="input-group input-group-seamless ml-3">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fas fa-search"></i>
                 </div>
-            </div>
-        </header>
-        <!-- /#header -->
-
-        @yield('konten')
-
-<div class="clearfix"></div>
+              </div>
+              <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+          </form>
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#form-components.html">
+                  <i class="material-icons">view_module</i>
+                  <span>Pembelian Stok</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#form-components.html">
+                  <i class="material-icons">view_module</i>
+                  <span>Penjualan Ritel</span>
+                </a>
+                <li class="nav-item">
+                  <a class="nav-link " href="#form-components.html">
+                    <i class="material-icons">work</i>
+                    <span>Service masuk</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#form-components.html">
+                  <i class="material-icons">motorcycle</i>
+                  <span>Penjemputan</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#form-components.html">
+                  <i class="material-icons">motorcycle</i>
+                  <span>Harga Servis</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#tables.html">
+                  <i class="material-icons">table_chart</i>
+                  <span>Table Penjualan dan Pembelian</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#user-profile-lite.html">
+                  <i class="material-icons">person</i>
+                  <span>Data Users</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
         
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="footer-inner bg-white">
-                <div class="row">
-                    <div class="col-sm-6">
-                        {{-- Copyright &copy; 2018 Ela Admin --}}
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        {{-- Designed by <a href="https://colorlib.com">Colorlib</a> --}}
-                    </div>
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+                <div class="main-navbar sticky-top bg-white">
+                  <!-- Main Navbar -->
+                  <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+                    <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                      <div class="input-group input-group-seamless ml-3">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-search"></i>
+                          </div>
+                        </div>
+                        <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+                    </form>
+                    <ul class="navbar-nav border-left flex-row ">
+                      
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                          <img class="user-avatar rounded-circle mr-2" src="{{ asset('images/avatar/1.jpg') }}" alt="User Avatar">
+                          <span class="d-none d-md-inline-block">Admin Javis</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-small">
+                          <a class="dropdown-item" href="user-profile-lite.html">
+                            <i class="material-icons">&#xE7FD;</i> Profile</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item text-danger" href="#">
+                            <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                        </div>
+                      </li>
+                    </ul>
+                    <nav class="nav">
+                      <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                        <i class="material-icons">&#xE5D2;</i>
+                      </a>
+                    </nav>
+                  </nav>
                 </div>
-            </div>
-        </footer>
-        <!-- /.site-footer -->
-    </div>
-    <!-- /#right-panel -->
-
-    <!-- Scripts -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script> --}}
-    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    {{-- <script src="../assets/js/main.js"></script> --}}
-
-    <!--  Chart js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
-
-    <!--Chartist Chart-->
-    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
-    <script src="../assets/js/init/weather-init.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-    <script src="../assets/js/init/fullcalendar-init.js"></script>
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    <script>
-$('.search-trigger').on('click', function(event) {
-		event.preventDefault();
-		event.stopPropagation();
-		$('.search-trigger').parent('.header-left').addClass('open');
-	});
-
-	$('.search-close').on('click', function(event) {
-		event.preventDefault();
-		event.stopPropagation();
-		$('.search-trigger').parent('.header-left').removeClass('open');
-	});
-</script>
-</body>
-</html>
+                <!-- / .main-navbar -->
+                <div class="main-content-container container-fluid px-4">
+                  <!-- Page Header -->
+                  <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                      <h3 class="page-title">Detail Service</h3>
+                    </div>
+                  </div>
+                  <!-- End Page Header -->
+        @yield('konten')
+        
+        <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+                <span class="copyright ml-auto my-auto mr-2">Copyright © 2019
+                  <a href="https://designrevision.com" rel="nofollow">JasaServisBismillah</a>
+                </span>
+              </footer>
+            </main>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+        {{-- <script src="{{ asset('scripts/extras.1.1.0.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('scripts/shards-dashboards.1.1.0.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('scripts/app/app-blog-overview.1.1.0.js') }}"></script> --}}
+      </body>
+    </html>
 @yield('jquery')
