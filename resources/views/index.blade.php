@@ -294,6 +294,56 @@
         			</div>
         		</div>
         	</div>
+			</sectio>
+			
+		<section class="blog_area">
+            <div class="container">
+                <div class="row">
+        
+				<div class="col-lg-4">
+							<div class="blog_right_sidebar">
+								<aside class="single_sidebar_widget search_widget">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search Posts">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+										</span>
+									</div><!-- /input-group -->
+									<div class="br"></div>
+								<aside class="single_sidebar_widget popular_post_widget">
+									<div class="media post_item">
+										<img src="img/blog/popular-post/post1.jpg" alt="post">
+										<div class="media-body">
+											<a href="blog-details.html"><h3>Ganti LCD Laptop Acer Aspire</h3></a>
+											<p>Rp.6******</p>
+										</div>
+									</div>
+									<div class="media post_item">
+										<img src="img/blog/popular-post/post2.jpg" alt="post">
+										<div class="media-body">
+											<a href="blog-details.html"><h3>Ganti Batrei Samsung J7</h3></a>
+											<p>//harga</p>
+										</div>
+									</div>
+									<div class="media post_item">
+										<img src="img/blog/popular-post/post3.jpg" alt="post">
+										<div class="media-body">
+											<a href="blog-details.html"><h3>Ganti LCD Hp Xiaomi</h3></a>
+											<p>//Harga</p>
+										</div>
+									</div>
+									<div class="media post_item">
+										<img src="img/blog/popular-post/post4.jpg" alt="post">
+										<div class="media-body">
+											<a href="blog-details.html"><h3>Matot Hp Vivo</h3></a>
+											<p>//Harga</p>
+										</div>
+									</div>
+									<div class="br"></div>
+									<h3 class="widget_title"><a href ="#">Cari yang lain..?</a></h3>
+								</aside>
+							</div>
+						</div>
         </section>
         
         <!--================Testimonials Area =================-->
