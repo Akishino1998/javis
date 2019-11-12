@@ -27,6 +27,10 @@ Route::post('/servis','HomeController@servisMasuk');
 
 //method
 Route::get('/getType/{id}', 'MethodController@getType');
+//method admin
+Route::get('/getMerk/{id}', 'MethodController@getMerk');
+Route::get('/getTipe/{id}','MethodController@getTipe');
+
 Route::get('/keluar', function () {
     session()->flush();
     return redirect('/home');
@@ -39,3 +43,6 @@ Route::get('/admin/daftar-harga','AdminController@daftar_harga');
 Route::get('/admin/daftar-harga/{id_elektronik}','AdminController@daftarHargaFilterElektronik');
 
 Route::get('/admin/addHargaServis','AdminController@tambahDataHargaServis');
+
+//admin input data
+Route::get('/admin/inputMerk/{merk}/{id}','InputDataController@inputMerk');

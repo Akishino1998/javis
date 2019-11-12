@@ -2,31 +2,7 @@
 @section('title','HOME | Nyervisga?')
 @section('content')
 	
-{{-- CARD --}}
-<div class="fullscreen-menu-container js-menu-container">
-    <a class="menu-button js-menu-close">
-        <div class="menu-icon is-active">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </a>
-    <div class="fullscreen-menu">
-        <div class="fullscreen-menu__image-container"></div>
-        <h1 class="fullscreen-menu__title">Mau Servis Apa kak?</h1>
-        <nav class="fullscreen-menu__nav">
-            <ul>
-				@foreach ($refElektronik as $items)
-					<li>
-						<h3>{{ $items->jenis_elektronik }}</h3>
-						<a href="/servis/{{ $items->id_ref_elektronik }}"> <img src="{{ asset('img/produk') }}/{{ $items->gambar }}" width="100"> </a>
-					</li>
-				@endforeach
-                
-            </ul>
-        </nav>
-    </div>
-</div>
+
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
             <div class="banner_inner">

@@ -28,7 +28,7 @@ class AdminController extends Controller
         $refElektronik = RefElektronik::all();
         $refMerk = RefMerk::all();
         $refType = RefType::all();
-        return view('');
+        return view('admin.addHarga', compact('refElektronik','refMerk','refType'));
     }
 
 }

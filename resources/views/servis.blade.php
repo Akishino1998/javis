@@ -93,8 +93,8 @@
 @endsection      
 	
 @section('jquery')
-	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
 	{{-- <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script> --}}
 	<script type="text/javascript" src="{{ asset('js/multipicker.js') }}"></script>
 
