@@ -286,9 +286,11 @@
         		<div class="row service_inner">
         			<div class="col-lg-4 col-md-6">
         				<div class="service_item">
-        					<h1>Mau Servis..?</h1>
-        					<h2>GADGET, LAPTOP, IPAD...? Di JAVIS aja .</h2>
-							<p>servis hp, laptop, dan ipad lebih mudah, cepat dan aman</p>
+        					<h3>Mau Servis Gadget-mu?? </h3>
+        					<h3>Servis Hp? Servis Laptop?</h3>
+							<h3>Ganti LCD? Ganti Baterai?</h3>
+							<h1>JAVIS.id</h1>
+							<p><a href="">Kontak WA : 085246719355</a> </p>
 							<a class="banner_btn js-menu-button" >Mulai Servis</a>
         				</div>
         			</div>
@@ -303,12 +305,7 @@
 				<div class="col-lg-4">
 							<div class="blog_right_sidebar">
 								<aside class="single_sidebar_widget search_widget">
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search Posts">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-										</span>
-									</div><!-- /input-group -->
+									
 									<div class="br"></div>
 								<aside class="single_sidebar_widget popular_post_widget">
 									<div class="media post_item">

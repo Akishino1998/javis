@@ -38,8 +38,15 @@
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav justify-content-center">
 								<li class="nav-item active"><a class="nav-link" href="\home">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="\servis">Services</a>
+								<li class="nav-item"><a class="nav-link" href="\servis">Jasa Servis</a>
+								<li class="nav-item"><a class="nav-link" href="\servis">Kontak Kami </a>
 							</ul>
+							<div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search Posts">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                                </div>
 							@if ( Session::has('id_user') )
 								<ul class="nav navbar-nav navbar-right">
 									<li class="nav-item"><a href="/biodata" class="tickets_btn btn-account">Hai, {{ Session::get('nama') }}</a></li>
