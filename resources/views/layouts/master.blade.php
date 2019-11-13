@@ -106,9 +106,10 @@
         					</div>
         					<p>Sosial Media Kami</p>
         					<ul class="list">
-        						<li><a href="https://www.facebook.com/nyervisga/"><i class="fa fa-facebook"></i></a></li>
-        						
-        					</ul>
+        						<li><a href="https://www.facebook.com/nyervisga/"><i class="fa fa-facebook-square"></i></a></li>
+        						<li><a href="https://www.instagram.com/servishp_javis/"><i class="fa fa-instagram"></i></a></li>
+								<li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+							</ul>
         				</aside>
         			</div>
         		</div>
