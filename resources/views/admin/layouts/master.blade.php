@@ -1,3 +1,6 @@
+@if (!Session::has('username-admin'))
+  <script>window.location.href = "/admin/login";</script>
+@endif
 <!doctype html>
 <html class="no-js h-100" lang="en">
   <head>
@@ -67,8 +70,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#form-components.html">
-                  <i class="material-icons">motorcycle</i>
+                <a class="nav-link " href="/admin/daftar-harga">
+                  <i class="material-icons">attach_money</i>
                   <span>Harga Servis</span>
                 </a>
               </li>
@@ -107,13 +110,13 @@
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                           <img class="user-avatar rounded-circle mr-2" src="{{ asset('images/avatar/1.jpg') }}" alt="User Avatar">
-                          <span class="d-none d-md-inline-block">Admin Javis</span>
+                          <span class="d-none d-md-inline-block">{{  Session::get('nama') }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-small">
                           <a class="dropdown-item" href="user-profile-lite.html">
                             <i class="material-icons">&#xE7FD;</i> Profile</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item text-danger" href="#">
+                          <a class="dropdown-item text-danger" href="/admin/logout">
                             <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                         </div>
                       </li>

@@ -15,90 +15,146 @@
                       <h6 class="m-0">Form Tambah Data Harga</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                      
-                      <li class="list-group-item p-3">
-                        <div class="row">
+                      <form action="/admin/inputKerusakan" method="POST" class="inputListKerusakan dropzone dz-clickable" id="my-awesome-dropzone" enctype="multipart/form-data">
+                        <li class="list-group-item p-3">
+                          <div class="row">
                             <div class="col-sm-8 col-md-6">
                                 <strong class="text-muted d-block mb-2">Data Elektronik</strong>
-                                <form>
-                                    <div class="row">
-                                        <div class="form-group col-6">
-                                          <label for="inputElektronik">Tipe Elektronik</label>
-                                            <select id="inputState" class="form-control inputElektronik">
-                                                <option selected="" value="1">Pilih Elektronik</option>
-                                                @foreach ($refElektronik as $item)
-                                                    <option value="{{ $item->id_ref_elektronik }}">{{ $item->jenis_elektronik }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div> 
-                                        <div class="form-group col-6" id="inputMerk">
-                                            <div class="row">
-                                                <div class="col-10">
-                                                    <label>Merk</label>
-                                                    <select id="inputState" class="form-control inputMerk">
-                                                        <option value="1">---Pilih Tipe Elektronik Dulu---</option>
-                                                    </select> 
-                                                </div>
-                                                <div class="col-2">
-                                                  <button style="margin-top:30px;" onClick="inputMerk()" type="button" class="mb-2 btn btn-sm btn-primary mr-1">Tambah Merk</button>
-                                                </div>
-                                            </div>
+                                  <div class="row">
+                                    <div class="form-group col-6">
+                                      <label for="inputElektronik">Tipe Elektronik</label>
+                                        <select id="inputState" class="form-control inputElektronik" name="id_ref_elektronik">
+                                          <option selected="" value="1">Pilih Elektronik</option>
+                                          @foreach ($refElektronik as $item)
+                                            <option value="{{ $item->id_ref_elektronik }}">{{ $item->jenis_elektronik }}</option>
+                                          @endforeach
+                                        </select>
+                                      </div> 
+                                      <div class="form-group col-6" id="inputMerk">
+                                        <div class="row">
+                                          <div class="col-10">
+                                            <label>Merk</label>
+                                            <select id="inputState" class="form-control inputMerk" name="id_merk">
+                                              <option value="1">---Pilih Tipe Elektronik Dulu---</option>
+                                            </select> 
+                                           </div>
+                                          <div class="col-2">
+                                            <button style="margin-top:30px;" onClick="inputMerk()" type="button" class="mb-2 btn btn-sm btn-primary mr-1">Tambah Merk</button>
+                                          </div>
                                         </div>
+                                      </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-6 offset-6" id="inputTipe">
-                                            <div class="row">
-                                              <div class="col-10">
-                                                  <label>Tipe</label>
-                                                  <select id="inputState"  class="form-control inputTipe">
-                                                      <option value="1">---Pilih Tipe Dulu---</option>
-                                                  </select>
-                                              </div>
-                                              <div class="col-2">
-                                                  <button style="margin-top:30px;" onClick="inputTipe()" type="button" class="mb-2 btn btn-sm btn-primary mr-1">Tambah Tipe</button>
-                                              </div> 
-                                            </div>
+                                  <div class="row">
+                                    <div class="form-group col-6 offset-6" id="inputTipe">
+                                      <div class="row">
+                                        <div class="col-10">
+                                          <label>Tipe</label>
+                                          <select id="inputState"  class="form-control inputTipe" name="id_detail_ref">
+                                            <option value="1">---Pilih Tipe Dulu---</option>
+                                          </select>
                                         </div>
+                                      <div class="col-2">
+                                        <button style="margin-top:30px;" onClick="inputTipe()" type="button" class="mb-2 btn btn-sm btn-primary mr-1">Tambah Tipe</button>
+                                      </div> 
                                     </div>
-                                </form>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
                           <div class="col-sm-12 col-md-6">
-                            <strong class="text-muted d-block mb-2">Form Validation</strong>
-                            <form>
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Catalin" required="">
-                                  <div class="valid-feedback">The first name looks good!</div>
+                            <strong class="text-muted d-block mb-2">Data Kerusakan Dan Harga</strong>
+                              <div class="row">
+                                <div class="form-group col-4">
+                                  <label>Kerusakan</label>
+                                  <select id="inputState" class="form-control inputKerusakan" name="id_ref_kerusakan">
+                                    <option value="1">---Isi Data Elektronik---</option>
+                                  </select>
+                                </div> 
+                                <div class="form-group col-4">
+                                  <label>Garansi</label>
+                                  <div class="input-group mb-3">
+                                    <input type="text" class="form-control garansi" value="7" name="garansi" id="garansi" disabled>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">Hari</span>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                  <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Vasile" required="">
-                                  <div class="valid-feedback">The last name looks good!</div>
+                                <div class="form-group col-4">
+                                  <label>Pengerjaan</label>
+                                  <div class="input-group mb-3">
+                                    <input type="text" class="form-control lama_perbaikan_hari" value="1" name="lama_perbaikan_hari" id="lama_perbaikan_hari" disabled>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">Hari</span>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Username" value="catalin.vasile" required="">
-                                <div class="invalid-feedback">This username is taken.</div>
+                              <div class="row">
+                                <div class="form-group col-4">
+                                  <label>Harga Sparepart</label>
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Rp</span>
+                                    </div>
+                                    <input type="text" class="form-control harga_sparepart" name="harga_sparepart" id="harga_sparepart"> 
+                                  </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label>Harga User</label>
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp</span>
+                                      </div>
+                                      <input type="text" class="form-control total_harga" name="total_harga" id="total_harga"> 
+                                    </div>
+                                  </div>
+                                <div class="form-group col-4">
+                                  <label>Distributor</label>
+                                  <select id="inputState" class="form-control" name="id_distributor" id="id_distributor">
+                                    <option value="1">---Pilih Distributor---</option>
+                                    @foreach ($refDistributor as $item)
+                                        <option value="{{ $item->id_distributor }}">{{ $item->nama_distributor }}</option>
+                                    @endforeach
+                                  </select>
+                                </div> 
                               </div>
-                              <div class="form-group">
-                                <select class="form-control is-invalid">
-                                  <option selected="">Choose...</option>
-                                  <option>...</option>
-                                </select>
-                                <div class="invalid-feedback">Please select your state.</div>
+                              <div class="row">
+                                  <div class="col-12">
+                                    <label>Foto Produk</label>
+                                    <input type="file" name="foto"  accept='image/png, image/jpeg, image/jpg' class="form-control">
+                                    {{-- <div class="custom-file">
+                                        <input type="file" name="foto" class="custom-file-input" id="customFile2" required=""  accept='image/png, image/jpeg, image/jpg'>
+                                        <label class="custom-file-label" for="customFile2">Choose file...</label>
+                                    </div> --}}
+                                    
+                                  </div>
                               </div>
-                            </form>
+                              <div class="row">
+                                  <div class="form-group col-4">
+                                      <button style="margin-top:30px;" type="submit" class="mb-2 btn btn-sm btn-primary mr-1">Simpan</button>
+                                    </div>
+                              </div>
                           </div>
                         </div>
                       </li>
-                    </ul>
-                  </div>
+                      @csrf
+                    </form>
+                   </ul>
                 </div>
+              </div>
             </div>
             <!-- End Users By Device Stats -->
 @endsection
 @section('jquery')
+<script src="{{ asset('js/jqueryMark.js') }}"></script>
 <script>
+
+$(document).ready( function () {
+    $( '.harga_sparepart' ).mask('000.000.000', {reverse: true});
+    $( '.total_harga' ).mask('000.000.000', {reverse: true});
+    $( '.lama_perbaikan_hari' ).mask('00000', {reverse: true});
+    $( '.garansi' ).mask('00000', {reverse: true});
+});
 
 $(".inputElektronik").change(function(){
 	setMerk();
@@ -108,6 +164,21 @@ $(".inputMerk").change(function(){
 	setTipe();
   
 });
+$(".inputTipe").change(function(){
+	setKerusakan();
+  $('#lama_perbaikan_hari').removeAttr('disabled');
+  $('#garansi').removeAttr('disabled');
+});
+
+function setKerusakan(){
+  $id = $('.inputTipe').val();
+	$.get('/getKerusakan/'+$id, function(data){
+		$(".inputKerusakan").empty();
+		$('.inputKerusakan').append(data);
+		console.log(data);
+  });
+}
+
 function setMerk(){
   $id = $('.inputElektronik').val();
 	$.get('/getMerk/'+$id, function(data){
@@ -174,7 +245,7 @@ function inputTipe(){
     });
 })
 .then(name => {
-  setMerk();
+  setTipe();
   swal({
     title: "SUKSES MENAMBAHKAN DATA",
     text: name,
@@ -190,5 +261,32 @@ function inputTipe(){
 });
 }
 
+</script>
+<script>
+    document.querySelector('.inputListKerusakan').addEventListener('submit', function(e) {
+      var form = this;
+      e.preventDefault();
+      swal({
+        title: "Sudah Yakin?",
+        text: "Pastikan data yang kamu input sudah benar, ya!",
+        icon: "warning",
+        buttons: [
+          'Aku mau cek ulang.',
+          'Iya, aku yakin!'
+        ],
+        // dangerMode: true,
+      }).then(function(isConfirm) {
+        if (isConfirm) {
+          swal({
+            title: 'Data Tersimpan',
+            text: 'Sukses Disimpan kakak >_<',
+            icon: 'success'
+          }).then(function() {
+			      form.submit();
+            // window.location.href = '/admin/daftar-harga';
+          });
+        } 
+      });
+    });
 </script>
 @endsection

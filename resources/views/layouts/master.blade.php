@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if(isset($_SESSION['username'])){
+	header("Location: /admin/login");
+}else{
+	header("Location: /admin/login");
+	echo "123";
+}
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,7 +27,9 @@
 		<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
         <!-- main css -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/slick.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
     </head>
     <body>
         
@@ -143,6 +154,7 @@
 		<script src="{{ asset('js/theme.js') }}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 		<script src="{{ asset('js/jqBootstrapValidation.js') }}"></script>
+		<script src="{{ asset('js/slick.min.js') }}"></script>
     </body>
 </html>
 @yield('jquery')
