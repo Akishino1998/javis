@@ -7,16 +7,17 @@
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>Cari Spare</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/linericon/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/owl-carousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/lightbox/simpleLightbox.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/nice-select/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/animate-css/animate.css') }}">
         <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_menu.css') }}">
     </head>
     <body>
         
@@ -26,7 +27,7 @@
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container box_1620">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo-javis.png" alt=""></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -36,8 +37,8 @@
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
 								<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
-								<li class="nav-item"><a class="nav-link" href="service.html">Services</a>
+								<li class="nav-item"><a class="nav-link" href="about-us.html">Jasa Service</a></li> 
+								<li class="nav-item"><a class="nav-link" href="service.html">Kontak Kami</a>
 								
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
@@ -49,7 +50,20 @@
             </div>
         </header>
         <!--================Header Menu Area =================-->
-        
+
+        <ul class="menu">
+            <li title="home"><a href="#" class="menu-button home">menu</a></li>
+            <li title="search"><a href="#" class="search">search</a></li>
+            <li title="contact"><a href="#" class="active about">about</a></li>
+            <li title="archive"><a href="#" class="archive">archive</a></li>
+            <li title="contact"><a href="#" class="contact">contact</a></li>
+          </ul> 
+          <ul class="menu-bar">
+              <li><a href="#" class="menu-button">Menu</a></li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Jasa Service</a></li>
+          </ul>
         <!--================Feature Area =================-->
         <section class="feature_area p_120">
         	<div class="container">	
@@ -125,30 +139,7 @@
                         <div class="single-footer-widget tp_widgets">
                            <h6 class="footer_title">Top Products</h6>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 offset-lg-1">
-                        <div class="single-footer-widget instafeed">
-                            <h6 class="footer_title">Instagram Feed</h6>
-                            <ul class="list instafeed d-flex flex-wrap">
-                                <li><img src="img/instagram/Image-01.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-02.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-03.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-04.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-05.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-06.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-07.jpg" alt=""></li>
-                                <li><img src="img/instagram/Image-08.jpg" alt=""></li>
-                            </ul>
-                        </div>
                     </div>	
-                </div>
-                <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                    <div class="col-lg-4 col-md-4 footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                    </div>
                 </div>
             </div>
         </footer>
@@ -160,19 +151,20 @@
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/stellar.js"></script>
-        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
-        <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-        <script src="vendors/isotope/isotope-min.js"></script>
-        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
-        <script src="vendors/counter-up/jquery.counterup.js"></script>
-        <script src="js/mail-script.js"></script>
-        <script src="js/theme.js"></script>
+        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('js/popper.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/stellar.js') }}"></script>
+        <script src="{{ asset('vendors/lightbox/simpleLightbox.min.js') }}"></script>
+        <script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ asset('vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ asset('vendors/isotope/isotope-min.js') }}"></script>
+        <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ asset('vendors/counter-up/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset('vendors/counter-up/jquery.counterup.js') }}"></script>
+        <script src="{{ asset('js/mail-script.js') }}"></script>
+        <script src="{{ asset('js/theme.js') }}"></script>
+        <script src="{{ asset('js/menu.js') }}"></script>
     </body>
 </html>

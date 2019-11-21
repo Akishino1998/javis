@@ -25,6 +25,10 @@ Route::get('/home','HomeController@index');
 Route::get('/servis/{id}','HomeController@servis');
 Route::post('/servis','HomeController@servisMasuk');
 
+Route::get('/cari_sp',function(){
+    return view('cari_sp');
+});
+
 //method
 Route::get('/getType/{id}', 'MethodController@getType');
 //method admin
