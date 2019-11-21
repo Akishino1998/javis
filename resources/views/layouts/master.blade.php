@@ -1,10 +1,9 @@
 <?php 
 session_start();
-if(isset($_SESSION['username'])){
+if(!isset($_SESSION['username'])){
 	header("Location: /admin/login");
 }else{
 	header("Location: /admin/login");
-	echo "123";
 }
 ?>
 <!doctype html>

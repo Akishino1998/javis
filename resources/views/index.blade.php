@@ -55,7 +55,7 @@
         			</div>
         		</div>
         	</div>
-			</sectio>
+			</section>
 			
 		<section class="blog_area">
             <div class="container">
