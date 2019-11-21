@@ -11,7 +11,8 @@
 |
 */
 //auth
-Route::get('/login','AuthController@index');
+Route::get('/login','AuthController@login');
+Route::get('/register','AuthController@register');
 
 
 Route::get('/', function () {
