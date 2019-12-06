@@ -12,6 +12,7 @@
 							<div class="autoplay">
 								<div class="home_left_img">
 									<img src="img/hero_3.png" alt="" width="300" height="400">
+									<p>Harga</p>
 								</div>
 								<div class="home_left_img">
 									<img src="img/hero_3.png" alt="" width="300" height="400">
@@ -50,13 +51,11 @@
 							<h3>Ganti LCD? Ganti Baterai?</h3>
 							<h1>JAVIS.id</h1>
 							<p><a href="">Kontak WA : 085246719355</a> </p>
-							<a class="banner_btn js-menu-button" >Mulai Servis</a>
         				</div>
         			</div>
         		</div>
         	</div>
 			</section>
-			
 		<section class="blog_area">
             <div class="container">
                 <div class="row">
