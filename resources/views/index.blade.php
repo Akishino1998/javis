@@ -40,7 +40,7 @@
             </div>
         </section>
 
-		<section class="service_area p_120">
+		<section class="service_area" style="margin-top:30px">
         	<div class="container">
         		<div class="row service_inner">
         			<div class="col-lg-4 col-md-6">
@@ -61,7 +61,7 @@
             <div class="container">
                 <div class="row">
         
-				<div class="col-lg-4">
+				<div class="col-5">
 							<div class="blog_right_sidebar">
 								<aside class="single_sidebar_widget search_widget">
 									
@@ -108,10 +108,12 @@
 
 <script>
 $('.autoplay').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
+	dots: true,
+	slidesToShow: 3,
+	slidesToScroll: 3,
+  	autoplay: true,
+	autoplaySpeed: 2000,
+	centerMode: true
 });
 </script>
 	@if(Session::has('login')){

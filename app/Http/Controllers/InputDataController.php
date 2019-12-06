@@ -7,7 +7,6 @@ use DateTime;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -28,6 +27,19 @@ class InputDataController extends Controller
         return $merk."+".$id;
     }
     function inputKerusakan(Request $request){
+        $harga_sparepart = '';
+        for($i = 0; $i < strlen($request->harga_sparepart);$i++){
+            if($request->harga_sparepart[$i] != '.'){
+                $harga_sparepart = $harga_sparepart.$request->harga_sparepart[$i];
+            }
+        }
+        $total_harga = '';
+        for($i = 0; $i < strlen($request->total_harga);$i++){
+            if($request->total_harga[$i] != '.'){
+                $total_harga = $total_harga.$request->total_harga[$i];
+            }
+        }
+        // return $total_harga;
         $username_admin = Session::get('username-admin');
         $foto = "none.jpg";
         if ($request->hasFile('foto')) {
@@ -41,12 +53,13 @@ class InputDataController extends Controller
             $foto = $fileName;
             Storage::disk('local')->put('public/foto-produk/'.$fileName, $img, 'public');
         }
+        
         DB::table('ref_harga_servis')->insert([
             'id_detail_merk' => $request->id_detail_ref,
             'id_ref_kerusakan' => $request->id_ref_kerusakan,
-            'harga_sparepart' => $request->harga_sparepart,
+            'harga_sparepart' => $harga_sparepart,
             'id_distributor' => $request->id_distributor,
-            'total_harga' => $request->total_harga,
+            'total_harga' => $total_harga,
             'garansi_hari' => $request->garansi,
             'lama_perbaikan_hari' => $request->lama_perbaikan_hari,
             'foto' => $foto,

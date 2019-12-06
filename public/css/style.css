@@ -306,8 +306,8 @@ button:focus {
   .home_banner_area .banner_inner {
     width: 100%; }
     .home_banner_area .banner_inner .home_left_img {
-      padding-top: 150px;
-      padding-bottom: 230px; }
+      margin-top: 150px;
+      padding-bottom: 50px; }
     .home_banner_area .banner_inner .col-lg-5 {
       vertical-align: middle;
       align-self: center; }

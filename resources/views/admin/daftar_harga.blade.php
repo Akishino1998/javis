@@ -96,13 +96,35 @@
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                               </div>
-                                        
                                             </div>
                                           </div>
                                         </div>
-                                      <button type="button" class="btn btn-white active-light">
+                                      <button type="button" class="btn btn-white active-light" data-toggle="modal" data-target="#myModal2{{ $item->id_ref_harga }}">
                                         <i class="material-icons"></i>
                                       </button>
+                                      <div class="modal" id="myModal2{{ $item->id_ref_harga }}">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                      
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">awd{{ $item->nama_merk }} {{ $item->type }} - {{ $item->jenis_kerusakan }}</h4>
+                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                      
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                              <p>Pelaku Input : {{ $item->nama }} ({{ $item->username }})</p>
+                                              <img src="{{ asset('storage/foto-produk') }}/{{ $item->foto }}" alt="" height="300">
+                                            </div>
+                                      
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                       <button type="button" class="btn btn-danger">
                                         <i class="material-icons"></i>
                                       </button>

@@ -48,7 +48,7 @@ class AuthController extends Controller
                 'password' => $password,
             ]);  
             Session::put('username-user', $username);
-            Session::put('nama-user', $nama);
+            // Session::put('nama-user', $nama);
             return redirect('/home')->with('alert','1');
         }else{
             return redirect('/register')->with('alert','1');

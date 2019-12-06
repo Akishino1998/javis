@@ -51,18 +51,16 @@ if(!isset($_SESSION['username'])){
 								<li class="nav-item"><a class="nav-link" href="\servis">Jasa Servis</a>
 								<li class="nav-item"><a class="nav-link" href="\servis">Kontak Kami </a>
 							</ul>
-							<div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search Posts">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-                                    </span>
-                                </div>
+							<div class="input-group" style="width:300px;padding-right:30px;">
+                                    <!-- Search form -->
+<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                            </div>
 							@if ( Session::has('id_user') )
 								<ul class="nav navbar-nav navbar-right">
 									<li class="nav-item"><a href="/biodata" class="tickets_btn btn-account">Hai, {{ Session::get('nama') }}</a></li>
 								</ul>
 							@else
-								<ul class="nav navbar-nav navbar-right">
+								<ul class="nav navbar-nav navbar-right" style="padding-right:5px;">
 									<li class="nav-item"><a href="/register" class="tickets_btn btn_daftar">DAFTAR</a></li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">

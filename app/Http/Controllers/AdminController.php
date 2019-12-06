@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\HargaServisHP;
@@ -51,7 +52,7 @@ class AdminController extends Controller
     function daftar_harga(){
         $refElektronik = RefElektronik::all();
         // $data = HargaServisHP::all();
-        $data = \DB::select('select * from ref_harga_servis_hp');
+        $data = DB::select('select * from ref_harga_servis_hp');
         return view('admin.daftar_harga', compact('data','refElektronik'));
     }
     function daftarHargaFilterElektronik($id_elektronik){
