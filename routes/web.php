@@ -12,7 +12,9 @@
 */
 //auth
 Route::get('/login','AuthController@login');
+Route::post('/login','AuthController@loginProses');
 Route::get('/register','AuthController@register');
+Route::post('/register','AuthController@registerProses');
 
 
 Route::get('/', function () {
