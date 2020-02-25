@@ -1,5 +1,10 @@
-@if (!Session::has('username-admin'))
-  <script>window.location.href = "/admin/login";</script>
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+@if(empty(Session::get('username-admin'))) 
+	<script>window.location = "/admin/login";</script>
 @endif
 <!doctype html>
 <html class="no-js h-100" lang="en">
@@ -25,8 +30,8 @@
             <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
               <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
                 <div class="d-table m-auto">
-                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{ asset('style_admin/images/shards-dashboards-logo.svg') }}" alt="Shards Dashboard">
-                  <span class="d-none d-md-inline ml-1">Admin Javis</span>
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="images/shards-dashboards-logo.svg" alt="Shards Dashboard">
+                  <span class="d-none d-md-inline ml-1">Shards Dashboard</span>
                 </div>
               </a>
               <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -43,48 +48,57 @@
               </div>
               <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
           </form>
-          <div class="nav-wrapper">
-            <ul class="nav flex-column">
+          <div class="nav-wrapper" style="overflow-y: auto;">
+            <h6 class="main-sidebar__nav-title">Data Servis</h6>
+            <ul class="nav nav--no-borders flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/daftar-harga">
+                  {{-- <i class="fa fa-sign-in" aria-hidden="true"></i> --}}
+                  <span>Daftar Harga Servis</span>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#form-components.html">
+                <a class="nav-link " href="/admin/servis-masuk">
+                  {{-- <i class="material-icons">edit</i> --}}
+                  <span>Data Servis Masuk</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/admin/servis-progress">
+                  {{-- <i class="material-icons">edit</i> --}}
+                  <span>Data Servis Progress</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/admin/servis-progress">
+                  {{-- <i class="material-icons">edit</i> --}}
+                  <span>Data Servis Selesai</span>
+                </a>
+              </li>
+            </ul>
+            
+            <h6 class="main-sidebar__nav-title">Data Customer</h6>
+            <ul class="nav nav--no-borders flex-column">
+              <li class="nav-item">
+                <a class="nav-link " href="components-overview.html">
                   <i class="material-icons">view_module</i>
-                  <span>Pembelian Stok</span>
+                  <span>Data Customer</span>
+                </a>
+              </li>
+              
+            </ul>
+            <h6 class="main-sidebar__nav-title">Daftar Inventaris</h6>
+            <ul class="nav nav--no-borders flex-column">
+              <li class="nav-item">
+                <a class="nav-link " href="header-navigation.html">
+                  <i class="material-icons">view_day</i>
+                  <span>Sparepart</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#form-components.html">
-                  <i class="material-icons">view_module</i>
-                  <span>Penjualan Ritel</span>
-                </a>
-                <li class="nav-item">
-                  <a class="nav-link " href="#form-components.html">
-                    <i class="material-icons">work</i>
-                    <span>Service masuk</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#form-components.html">
-                  <i class="material-icons">motorcycle</i>
-                  <span>Penjemputan</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/admin/daftar-harga">
-                  <i class="material-icons">attach_money</i>
-                  <span>Harga Servis</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#tables.html">
-                  <i class="material-icons">table_chart</i>
-                  <span>Table Penjualan dan Pembelian</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#user-profile-lite.html">
-                  <i class="material-icons">person</i>
-                  <span>Data Users</span>
+                <a class="nav-link " href="icon-sidebar-nav.html">
+                  <i class="material-icons"></i>
+                  <span>Alat Servis</span>
                 </a>
               </li>
             </ul>
@@ -151,7 +165,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
         {{-- <script src="{{ asset('scripts/extras.1.1.0.min.js') }}"></script> --}}
         {{-- <script src="{{ asset('scripts/shards-dashboards.1.1.0.min.js') }}"></script> --}}
-        {{-- <script src="{{ asset('scripts/app/app-blog-overview.1.1.0.js') }}"></script> --}}
+        <script src="{{ asset('scripts/app/app-blog-overview.1.1.0.js') }}"></script>
       </body>
     </html>
 @yield('jquery')

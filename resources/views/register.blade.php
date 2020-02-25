@@ -18,7 +18,8 @@
 			<div class="inner">
 				<img src="style_register/images/image-1.png" alt="" class="image-1">
 				<form action="/register" method="POST" onsubmit=" return Password()" class="validate-form">
-					<h3>Buat Akun Baru JAVIS</h3>
+					<center><img src="javis-logo.png" alt="" width="200"></center>
+					<h3>Buat Akun</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
 						<input name="username" type="text" class="form-control" placeholder="Username">
@@ -67,7 +68,7 @@
 </script>
 @if(Session::has('alert')){
 	{{-- <script>alert(12);</script> --}}
-	@if(Session::get('alert')){
+	@if(Session::get('alert') == 1){
 		<script>
 			swal({
 				title : "Username Telah Terdaftar!",

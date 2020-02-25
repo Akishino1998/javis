@@ -64,9 +64,9 @@
                           <div class="col-sm-12 col-md-6">
                             <strong class="text-muted d-block mb-2">Data Kerusakan Dan Harga</strong>
                               <div class="row">
-                                <div class="form-group col-4">
-                                  <label>Kerusakan</label>
-                                  <select id="inputState" class="form-control inputKerusakan" name="id_ref_kerusakan">
+                                <div class="form-group col-4" >
+                                  <label>Kerusakan <div id="addkerusakan" onClick="inputKerusakan()" class="btn btn-primary btn-sm" style="height:10px;" hidden="true" ><p style="margin-top:-10px;">+</p></div></label>
+                                  <select id="inputState " class="form-control inputKerusakan" name="id_ref_kerusakan">
                                     <option value="1">---Isi Data Elektronik---</option>
                                   </select>
                                 </div> 
@@ -168,6 +168,7 @@ $(".inputTipe").change(function(){
 	setKerusakan();
   $('#lama_perbaikan_hari').removeAttr('disabled');
   $('#garansi').removeAttr('disabled');
+  $('#addkerusakan').removeAttr('hidden');
 });
 
 function setKerusakan(){
@@ -178,6 +179,8 @@ function setKerusakan(){
 		console.log(data);
   });
 }
+
+
 
 function setMerk(){
   $id = $('.inputElektronik').val();
@@ -246,6 +249,38 @@ function inputTipe(){
 })
 .then(name => {
   setTipe();
+  swal({
+    title: "SUKSES MENAMBAHKAN DATA",
+    text: name,
+  });
+})
+.catch(err => {
+  if (err) {
+    swal("Tidak Benar!");
+  } else {
+    swal.stopLoading();
+    swal.close();
+  }
+});
+}
+
+function inputKerusakan(){
+  swal({
+  text: 'Masukkan Kerusakan',
+  content: "input",
+  button: {
+    text: "Ok!",
+    closeModal: false,
+  },
+})
+.then(name => {
+  if (!name) throw null 
+    $.get(`/admin/inputKerusakan/${name}`, function(data){
+      console.log(data);
+    });
+})
+.then(name => {
+  setKerusakan();
   swal({
     title: "SUKSES MENAMBAHKAN DATA",
     text: name,

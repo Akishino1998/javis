@@ -33,26 +33,24 @@
 				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST" action="/login">
 					<span class="login100-form-title">
 						LOGIN JAVIS
+						<p style="color:black;font-size:15px">Aplikasi pemesanan jasa servis gadget antar jemput.</p>
 					</span>
-
+					
+					<div class="wrap-input100 validate-input m-b-16" >
+						<center><h6 >Belum Punya Akun? <a href="/register" class="txt3">Klik Di Sini</a></h6></center>
+					</div>
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Contoh : ekojavis">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password Anda">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="text-right p-t-13 p-b-23">
-						<span class="txt1">
-							Lupa
-						</span>
+					<div class="flex-col-c p-t-13 p-b-20">
 
-						<a href="#" class="txt2">
-							Username / Password?
-						</a>
 					</div>
 
 					<div class="container-login100-form-btn">
@@ -60,16 +58,14 @@
 							LOGIN
 						</button>
 					</div>
-
-					<div class="flex-col-c p-t-13 p-b-40">
-						<span class="txt1 p-b-9">
-							Belum Punya Akun?
-						</span>
-
-						<a href="/register" class="txt3">
-							Daftar Dong!
-						</a>
+					<div class="text-right p-t-13 p-b-23">
+						<center>
+							<a href="#" class="txt2">
+							Lupa Password?
+							</a>
+						</center>
 					</div>
+					
 					@csrf
 				</form>
 			</div>

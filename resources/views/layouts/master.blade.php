@@ -1,11 +1,11 @@
 <?php 
-session_start();
-if(!isset($_SESSION['username'])){
-	header("Location: /admin/login");
-}else{
-	header("Location: /admin/login");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 ?>
+{{-- @if(empty(Session::get('user-javis'))) 
+	<script>window.location = "/login";</script>
+@endif --}}
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,7 +18,8 @@ if(!isset($_SESSION['username'])){
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/linericon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendors/owl-carousel/owl.carousel.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('vendors/owl-carousel/assets/owl.carousel.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('vendors/owl-carousel/assets/owl.theme.default.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/lightbox/simpleLightbox.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/nice-select/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/animate-css/animate.css') }}">
@@ -38,7 +39,7 @@ if(!isset($_SESSION['username'])){
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container box_1620">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="/home"><img src="{{ asset('img/logo-javis.png') }}" alt="" width="150"></a>
+						<a class="navbar-brand logo_h" href="/home"><img src="{{ asset('javis-logo.png') }}" alt="" width="150"></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -48,17 +49,29 @@ if(!isset($_SESSION['username'])){
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav justify-content-center">
 								<li class="nav-item active"><a class="nav-link" href="\home">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="\servis">Jasa Servis</a>
-								<li class="nav-item"><a class="nav-link" href="\servis">Kontak Kami </a>
+								<li class="nav-item"><a class="nav-link" href="\daftar-servis">Jasa Servis</a>
+								<li class="nav-item"><a class="nav-link" href="\testimoni">Testimoni</a>
+								<li class="nav-item"><a class="nav-link" href="\kontak">Kontak Kami </a>
 							</ul>
-							<div class="input-group" style="width:300px;padding-right:30px;">
-                                    <!-- Search form -->
-<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                            </div>
-							@if ( Session::has('id_user') )
-								<ul class="nav navbar-nav navbar-right">
-									<li class="nav-item"><a href="/biodata" class="tickets_btn btn-account">Hai, {{ Session::get('nama') }}</a></li>
-								</ul>
+							<div class="input-group" style="width:400px;">
+								<form  method="GET" action="/cari-servis">
+									<input class="form-control form-control-sm" type="text" placeholder="Cari Merk HP" aria-label="Search"  name="cari">
+								</form>
+                            </div> 
+							@if ( session()->has('user-javis') )
+							
+								<div class="dropdown">
+									<div class="nav navbar-nav navbar-right "  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" >
+										<li class="nav-item">
+											<a href="/biodata" class="tickets_btn btn-account "> Hai, {{ Session::get('nama-user-javis') }}</a>
+										</li>
+									</div>
+									<div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuButton">
+										<a class="dropdown-item" href="/biodata" ><i class="fa fa-user" aria-hidden="true"></i> Biodata</a><div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="/mygadget"><i class="fa fa-mobile" aria-hidden="true"></i> Gadgetku</a><div class="dropdown-divider"></div>
+										<a class="dropdown-item text-danger" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+									  </div>
+								</div>
 							@else
 								<ul class="nav navbar-nav navbar-right" style="padding-right:5px;">
 									<li class="nav-item"><a href="/register" class="tickets_btn btn_daftar">DAFTAR</a></li>
@@ -114,7 +127,7 @@ if(!isset($_SESSION['username'])){
         					</div>
         					<p>Sosial Media Kami</p>
         					<ul class="list">
-        						<li><a href="https://www.facebook.com/nyervisga/"><i class="fa fa-facebook-square"></i></a></li>
+        						<li><a href="https://www.facebook.com/javis.samarinda.9"><i class="fa fa-facebook-square"></i></a></li>
         						<li><a href="https://www.instagram.com/servishp_javis/"><i class="fa fa-instagram"></i></a></li>
 								<li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
 							</ul>
@@ -139,7 +152,8 @@ if(!isset($_SESSION['username'])){
         <script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
         <script src="{{ asset('vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
         <script src="{{ asset('vendors/isotope/isotope-min.js') }}"></script>
-        <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+		{{-- <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script> --}}
         <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
         <script src="{{ asset('vendors/counter-up/jquery.waypoints.min.js') }}"></script>
         <script src="{{ asset('vendors/counter-up/jquery.counterup.min.js') }}"></script>
@@ -154,4 +168,17 @@ if(!isset($_SESSION['username'])){
 		<script src="{{ asset('js/slick.min.js') }}"></script>
     </body>
 </html>
+<script>
+
+	$('.tickets_btn').mouseenter(function(){
+		$('.dropdown').addClass("show");
+		$('.dropdown-menu').addClass("show");
+	});
+	$('.dropdown-menu').mouseleave(function(){
+		$('.dropdown').removeClass("show");
+		$('.dropdown-menu').removeClass("show");
+	});
+
+
+</script>
 @yield('jquery')

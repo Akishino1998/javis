@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,27 +11,42 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//auth
-Route::get('/login','AuthController@login');
-Route::post('/login','AuthController@loginProses');
-Route::get('/register','AuthController@register');
-Route::post('/register','AuthController@registerProses');
-
 
 Route::get('/', function () {
     // return view('welcome');
     return redirect('/home');
 });
 
-//home 
+//auth
+Route::get('/logout', function () {
+    Session::flush();
+    return redirect('/home');
+});
+Route::get('/login','AuthController@login')->name('login');
+Route::post('/login','AuthController@loginProses');
+Route::get('/register','AuthController@register');
+Route::post('/register','AuthController@registerProses');
+Route::get('/user-setting','AuthController@userSetting');
+Route::get('/biodata','AuthController@biodataUser');
+Route::POST('/biodata','AuthController@biodataUserAdd');
+Route::get('/edit-foto','AuthController@editFoto');
+Route::POST('/edit-foto','AuthController@editFotoAdd');
+//user device
+Route::get('/mygadget','AuthController@gadget');
 
+
+//home 
+Route::get('/daftar-servis','HomeController@daftarServis');
+Route::get('/cari-servis','HomeController@cariServis');
 Route::get('/home','HomeController@index');
 Route::get('/servis/{id}','HomeController@servis');
 Route::post('/servis','HomeController@servisMasuk');
+Route::get('/detail-servis','HomeController@detailServis');
+Route::get('/iklan/{id}','HomeController@itemServis');
+// Route::post('/pesan_servis','HomeController@pesan');
+Route::get('/kontak','HomeController@kontak');
+Route::get('/pesan-servis/{id}','OrderController@index');
 
-Route::get('/cari_sp',function(){
-    return view('cari_sp');
-});
 
 //method
 Route::get('/getType/{id}', 'MethodController@getType');
@@ -47,7 +63,7 @@ Route::get('/keluar', function () {
 
 //admin
 Route::get('/enkrip',function(){
-    return password_hash("123456", PASSWORD_DEFAULT);
+    return password_hash("admin", PASSWORD_DEFAULT);
 });
 Route::get('/admin/login','AdminController@login');
 Route::post('/admin/login','AdminController@verifikasilogin');
@@ -65,4 +81,7 @@ Route::get('/admin/addHargaServis','AdminController@tambahDataHargaServis');
 //admin input data
 Route::get('/admin/inputMerk/{merk}/{id}','InputDataController@inputMerk');
 Route::get('/admin/inputTipe/{merk}/{id}','InputDataController@inputTipe');
-Route::post('/admin/inputKerusakan','InputDataController@inputKerusakan');
+Route::get('/admin/inputKerusakan/{kerusakan}','InputDataController@inputKerusakan');
+Route::post('/admin/inputKerusakan','InputDataController@inputHarga');
+Route::post('/admin/updateData','InputDataController@updateData');
+Route::get('/admin/deleteData/{id}','InputDataController@deleteData');

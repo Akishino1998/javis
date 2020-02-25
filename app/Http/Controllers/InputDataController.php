@@ -26,7 +26,7 @@ class InputDataController extends Controller
         ]);  
         return $merk."+".$id;
     }
-    function inputKerusakan(Request $request){
+    function inputHarga(Request $request){
         $harga_sparepart = '';
         for($i = 0; $i < strlen($request->harga_sparepart);$i++){
             if($request->harga_sparepart[$i] != '.'){
@@ -39,19 +39,13 @@ class InputDataController extends Controller
                 $total_harga = $total_harga.$request->total_harga[$i];
             }
         }
-        // return $total_harga;
         $username_admin = Session::get('username-admin');
         $foto = "none.jpg";
         if ($request->hasFile('foto')) {
             $image      = $request->file('foto');
             $fileName   = time() . '.' . $image->getClientOriginalExtension();
-            $img = Image::make($image->getRealPath());
-            $img->resize(300, 400, function ($constraint) {
-                $constraint->aspectRatio();                 
-            });
-            $img->stream();
-            $foto = $fileName;
-            Storage::disk('local')->put('public/foto-produk/'.$fileName, $img, 'public');
+
+            $image->move("foto-produk",$fileName);
         }
         
         DB::table('ref_harga_servis')->insert([
@@ -66,5 +60,36 @@ class InputDataController extends Controller
             'username'=> $username_admin,
         ]);  
         return redirect('/admin/daftar-harga');
+    }
+    function updateData(Request $request){
+        // dd($request);
+        $foto = "none.jpg";
+        if ($request->hasFile('foto')) {
+            $image      = $request->file('foto');
+            $fileName   = time() . '.' . $image->getClientOriginalExtension();
+
+            $image->move("foto-produk",$fileName);
+            
+            DB::table('ref_harga_servis')->where('id_ref_harga',$request->id_ref_harga)->update([
+                'harga_sparepart'=> $request->harga_part,
+                'id_distributor'=>  $request->id_distributor,
+                'garansi_hari'=>         $request->garansi,
+                'total_harga'=>     $request->harga_total,
+                'foto' => $fileName
+            ]);
+        }
+        
+        return redirect('/admin/daftar-harga');
+    }
+
+    function deleteData($id){
+        DB::table('ref_harga_servis')->where('id_ref_harga', $id)->delete();
+        return redirect('/admin/daftar-harga');
+    }
+    function inputKerusakan($kerusakan){
+        DB::table('ref_kerusakan')->insert([
+            'jenis_kerusakan' => $kerusakan
+        ]);  
+        return $kerusakan;
     }
 }
