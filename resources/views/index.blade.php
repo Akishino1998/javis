@@ -92,7 +92,7 @@
 }
 .img {
   width: 100%;
-  height: auto;
+  height:auto;
 }
 .wishlist{
 	position: absolute;
@@ -116,7 +116,7 @@
 								@foreach ($data as $item)
 									
 										<div class="card  text-white card-banner">
-											<img class="card-img img " src="{{ asset('foto-produk/foto.jpg') }}" alt="Card image">
+											<img class="card-img img " src="{{ asset('foto-produk/') }}/{{$item->foto}}" alt="Card image" >
 											<h5 class="card-title wishlist"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></h5>
 											<a href="/iklan/{{ $item->id_ref_harga}}"><div class="card-img-overlay">
 												
@@ -182,7 +182,7 @@
 												
 													<div class="media post_item ">
 														<a href="/iklan/{{ $item->id_ref_harga}}">
-															<img src="{{ asset('foto-produk/foto.jpg') }}" alt="post" width="100">
+															<img src="{{ asset('foto-produk/') }}/{{$item->foto}}" alt="post" width="100">
 															<script>
 																var 	bilangan = {{ $item->total_harga }};
 																var	reverse = bilangan.toString().split('').reverse().join(''),
@@ -190,7 +190,7 @@
 																ribuan	= ribuan.join('.').split('').reverse().join('');
 															</script>
 															<div class="media-body">
-																<a href="blog-details.html"><h3>{{ $item->jenis_kerusakan }} {{ $item->nama_merk }} {{ $item->type }}</h3></a>
+																<h3 >{{ $item->jenis_kerusakan }} {{ $item->nama_merk }} {{ $item->type }}</a>
 																<p>Rp. <script>document.write(ribuan);</script></p>
 															</div>
 														</a>
@@ -225,7 +225,7 @@
 							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
 								<a href="/iklan/{{ $item->id_ref_harga}}">
 									<div class="card  text-white ">
-										<img class="card-img img " src="{{ asset('foto-produk/foto.jpg') }}" alt="Card image">
+										<img class="card-img img " src="{{ asset('foto-produk/') }}/{{$item->foto}}" alt="Card image">
 										<div class="card-img-overlay">
 											<script>	
 												var 	bilangan = {{ $item->total_harga }};

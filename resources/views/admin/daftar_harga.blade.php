@@ -167,11 +167,9 @@
                                         @csrf
                                       </form>
                                       {{-- hapus --}}
-                                      <a href="/admin/deleteData/{{ $item->id_ref_harga }}">
-                                        <button type="button" class="btn btn-danger">
+                                        <button type="button" class="btn btn-danger" onclick="hapus({{ $item->id_ref_harga }})">
                                           <i class="material-icons"></i>
                                         </button>
-                                      </a>
                                     </div>
                                   </td>
                               </tr>
@@ -193,5 +191,24 @@
         $('#table_harga').DataTable();
         // $( '.rupiah' ).mask('000.000.000', {reverse: true});
     } );
+    function hapus(id){
+      var idItem = id
+      // /admin/deleteData/{{ $item->id_ref_harga }}
+      swal({
+        title: "Yakin Dihapus?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({url: "/admin/deleteData/"+idItem, success: function(result){
+            location.reload();
+          }});
+          
+        }
+      });
+    }
     </script>
+
 @endsection

@@ -40,7 +40,7 @@ class InputDataController extends Controller
             }
         }
         $username_admin = Session::get('username-admin');
-        $foto = "none.jpg";
+        $foto = "foto.jpg";
         if ($request->hasFile('foto')) {
             $image      = $request->file('foto');
             $fileName   = time() . '.' . $image->getClientOriginalExtension();
@@ -77,8 +77,15 @@ class InputDataController extends Controller
                 'total_harga'=>     $request->harga_total,
                 'foto' => $fileName
             ]);
+        }else{
+            DB::table('ref_harga_servis')->where('id_ref_harga',$request->id_ref_harga)->update([
+                'harga_sparepart'=> $request->harga_part,
+                'id_distributor'=>  $request->id_distributor,
+                'garansi_hari'=>         $request->garansi,
+                'total_harga'=>     $request->harga_total
+            ]);
         }
-        
+        // return $request;
         return redirect('/admin/daftar-harga');
     }
 

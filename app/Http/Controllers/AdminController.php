@@ -13,10 +13,27 @@ use App\RefType;
 use App\RefKerusakan;
 use App\RefDistributor;
 use App\AdminUser;
+use App\UserElektronik;
+
+use App\ServisMasuk;
 class AdminController extends Controller
 {
-
+    function index(){
+        $servisMasuk = ServisMasuk::all()->where('status','<','4')->COUNT();
+        return view('admin.index', compact("servisMasuk"));
+    }
+    function servis_masuk(){
+        $data = DB::select("SELECT * FROM tb_servis_masuk, tb_user_elektronik, ref_detail_merk, ref_merk, ref_elektronik, ref_kerusakan, tb_alamat_jemput
+        WHERE tb_servis_masuk.id_user_elektronik = tb_user_elektronik.id_user_elektronik 
+        AND ref_detail_merk.id_detail_merk = tb_user_elektronik.id_detail_merk
+        AND ref_merk.id_merk = ref_detail_merk.id_merk
+        AND ref_elektronik.id_ref_elektronik = ref_merk.id_ref_elektronik
+        AND ref_kerusakan.id_ref_kerusakan = tb_servis_masuk.id_ref_kerusakan
+        AND tb_alamat_jemput.id_servis_masuk = tb_servis_masuk.id_servis_masuk");
+        return view('admin.servisMasuk', compact('data'));
+    }
     function login(){
+        
         return view('admin.login');
     }
     function verifikasilogin(Request $request){
@@ -44,11 +61,8 @@ class AdminController extends Controller
         
         
         
-    }
-    function index(){
-        return view('admin.index');
-        // return view('index_admin');
     } 
+     
     function daftar_harga(){
         $refElektronik = RefElektronik::all();
         $refDistributor = RefDistributor::all();

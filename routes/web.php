@@ -45,7 +45,9 @@ Route::get('/detail-servis','HomeController@detailServis');
 Route::get('/iklan/{id}','HomeController@itemServis');
 // Route::post('/pesan_servis','HomeController@pesan');
 Route::get('/kontak','HomeController@kontak');
-Route::get('/pesan-servis/{id}','OrderController@index');
+Route::post('/pesan-servis','OrderController@index');
+Route::get('/pesan-servis/{id}','OrderController@pesanServis');
+Route::post('/setLokasiPenjemputan','OrderController@setLokasiPenjemputan');
 
 
 //method
@@ -73,10 +75,11 @@ Route::get('/admin/logout', function () {
     return redirect('/admin/login');
 });
 Route::get('/admin','AdminController@index');
+Route::get('/admin/servis-masuk','AdminController@servis_masuk');
 Route::get('/admin/daftar-harga','AdminController@daftar_harga');
 Route::get('/admin/daftar-harga/{id_elektronik}','AdminController@daftarHargaFilterElektronik');
-
 Route::get('/admin/addHargaServis','AdminController@tambahDataHargaServis');
+
 
 //admin input data
 Route::get('/admin/inputMerk/{merk}/{id}','InputDataController@inputMerk');
@@ -85,3 +88,4 @@ Route::get('/admin/inputKerusakan/{kerusakan}','InputDataController@inputKerusak
 Route::post('/admin/inputKerusakan','InputDataController@inputHarga');
 Route::post('/admin/updateData','InputDataController@updateData');
 Route::get('/admin/deleteData/{id}','InputDataController@deleteData');
+ 

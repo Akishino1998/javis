@@ -50,11 +50,45 @@
                         </div>
                         <div class="col-sm-4">
                             <br><br>
-                            <a href="/pesan-servis/{{ $data->id_ref_harga  }}">
-                                <button type="button" class="genric-btn primary radius " >
+                                <button type="button" class="genric-btn primary radius " data-toggle="modal" data-target="#myModal" >
                                     Order Servis Sekarang 
                                 </button>
-                            </a>
+                                <form action="/pesan-servis" method="post">
+                                    <div class="modal" id="myModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Lengkapi data ini, ya!</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <table>
+                                                    <input type="text" name="id" id="id" class="form-control" value="{{ $data->id_ref_harga }}" hidden>
+                                                        <tr>
+                                                            <th>Harga Sparepart</th>
+                                                            <td>:</td>
+                                                            <td><input type="text" name="warna" id="warna" class="form-control" placeholder="Contoh : biru"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Keterangan</th>
+                                                            <td>:</td>
+                                                            <td><textarea name="keterangan" id="" cols="30" rows="5" placeholder="Warna biru, ada stiker javis di belakangnya"></textarea></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                        
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="genric-btn primary radius " >Order</button>
+                                                    {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @csrf
+                                </form>
                         </div>
                         
                     </div>
@@ -70,8 +104,8 @@
 
 @section('jquery')
     <script>
-        function sendWA(){
-            swal("Write something here:", {
+        function orderServis(){
+            swal("Lengkapi Data Berikut:", {
                 content: "input",
             })
         }

@@ -22,7 +22,7 @@
 							<div class="col-lg-3 col-sm-12">
 								<a href="/iklan/{{ $item->id_ref_harga }}">
 									<div class="service_item">
-										<img src="{{ asset('foto-produk/foto.jpg') }}" alt="" width="250" height="auto" class="img-iklan">
+										<img  src="{{ asset('foto-produk/') }}/{{$item->foto}}" alt="" width="250" height="auto" class="img-iklan">
 										<script>
 											var 	bilangan = {{ $item->total_harga }};
 											var	reverse = bilangan.toString().split('').reverse().join(''),
