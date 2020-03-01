@@ -1,7 +1,9 @@
 <?php 
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 ?>
 @if(empty(Session::get('username-admin'))) 
 	<script>window.location = "/admin/login";</script>

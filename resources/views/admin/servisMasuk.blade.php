@@ -29,7 +29,8 @@
                           <th>Kode Unik</th>
                         </tr>
                       </thead>
-                      <?php $no = 1; ?>
+                      <?php $no = 1; 
+                      $statusServis = ["Pending","Penjemputan","Masuk","Cancel","Selesai"];?>
                       <tbody class="text-center">
                         @foreach ($data as $item)
                             <tr>
@@ -39,7 +40,7 @@
                             <td>{{ $item->tgl_masuk }}</td>
                             <td>{{ $item->jenis_kerusakan }}</td>
                             <td>{{ $item->penyebab_rusak }}</td>
-                            <td>{{ $item->status }}</td>
+                            <td><?php echo $statusServis[$item->status-1]; ?></td>
                             <td>{{ $item->kode_unik }}</td>
                             </tr>
                         @endforeach
