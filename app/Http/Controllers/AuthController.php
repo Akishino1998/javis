@@ -119,8 +119,6 @@ class AuthController extends Controller
         }
         return redirect('/biodata')->with('notice','1');
     }
-    function gadget(){
-        return view('user.mygadget');
-    }
+    
 }
   

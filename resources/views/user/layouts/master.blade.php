@@ -55,7 +55,7 @@ if (session_status() == PHP_SESSION_NONE) {
               <li class="nav-item">
                 <a class="nav-link" href="/servisku">
                   {{-- <i class="fa fa-sign-in" aria-hidden="true"></i> --}}
-                  <span>Daftar Servis</span>
+                  <span>Transaksi Servis</span>
                 </a>
               </li>
             </ul>

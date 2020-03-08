@@ -25,8 +25,10 @@
                           <th>Tgl Masuk</th>
                           <th>Kerusakan</th>
                           <th>Penyebab Kerusakan</th>
+                          <th>Kelengkapan</th>
                           <th>Status</th>
                           <th>Kode Unik</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <?php $no = 1; 
@@ -39,9 +41,12 @@
                               <td>{{ $item->nama_merk }}-{{ $item->type }}</td>
                             <td>{{ $item->tgl_masuk }}</td>
                             <td>{{ $item->jenis_kerusakan }}</td>
+                            
                             <td>{{ $item->penyebab_rusak }}</td>
+                            <td>{{ $item->kelengkapan }}</td>
                             <td><?php echo $statusServis[$item->status-1]; ?></td>
                             <td>{{ $item->kode_unik }}</td>
+                            <td><button type="button" class="btn btn-primary btn-sm">Ubah</button></td>
                             </tr>
                         @endforeach
                       </tbody>

@@ -33,6 +33,8 @@ Route::get('/edit-foto','AuthController@editFoto');
 Route::POST('/edit-foto','AuthController@editFotoAdd');
 //user device
 Route::get('/mygadget','AuthController@gadget');
+Route::get('/servisku','UserController@servis');
+
 
 
 //home 
