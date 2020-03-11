@@ -31,6 +31,7 @@ Route::get('/biodata','AuthController@biodataUser');
 Route::POST('/biodata','AuthController@biodataUserAdd');
 Route::get('/edit-foto','AuthController@editFoto');
 Route::POST('/edit-foto','AuthController@editFotoAdd');
+Route::POST('/edit-password','AuthController@editPasswordEdit');
 //user device
 Route::get('/mygadget','AuthController@gadget');
 Route::get('/servisku','UserController@servis');

@@ -8,6 +8,7 @@ use App\UserBiodata;
 use App\UserAlamat;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller
@@ -19,19 +20,18 @@ class AuthController extends Controller
         $username = $request->username;
         $password = $request->password;
         
-        $stat = DB::table('tb_user_akun')->where('username', $username)->get();
-
-        // dd($stat->count());
-        if($stat->count() >= 0){
-            $user = UserAkun::where('username',$username)->first();
-            // return $user;
+        $user = UserAkun::where('username',$username)->first();
+        if($user){
             if (password_verify($password, $user->password)) {
-                $biodata = UserBiodata::all()->where('username',$username)->first();
-                Session::put('user-javis', $biodata->username);
-                $_SESSION["user-javis"] = $biodata->username;
-
-                Session::put('nama-user-javis', $biodata->nama);
-                $_SESSION["nama-user-javis"] = $biodata->nama;
+                Session::put('user-javis', $user->username);
+                $_SESSION["user-javis"] = $user->username;
+                $nama=$user->username;
+                $biodata = UserBiodata::where('username',$user->username)->first();
+                if($biodata){
+                    $nama=$biodata->nama==NULL?$user->username:$biodata->nama;
+                }
+                Session::put('nama-user-javis', $nama);
+                $_SESSION["nama-user-javis"] = $nama;
                 // return $_SESSION["user-javis"];
                 return redirect('/home');
             } else {
@@ -39,7 +39,7 @@ class AuthController extends Controller
                 return redirect('/login')->with('alert','1');
             }
         }else{
-            // return redirect('/login')->with('alert','1');
+            return redirect('/login')->with('alert','1');
             // return 3;
         }
         
@@ -51,10 +51,10 @@ class AuthController extends Controller
         $username = $request->username;
         $password = password_hash($request->password, PASSWORD_DEFAULT);
 
-        $stat = DB::table('tb_user_akun')->where('username', $username)->get();
+        $stat = UserAkun::where('username', $username)->first();
 
-        if($stat->count() == 0){
-            DB::table('tb_user_akun')->insert([
+        if(!$stat){
+            UserAkun::insert([
                 'username' => $username,
                 'password' => $password,
             ]);  
@@ -70,12 +70,13 @@ class AuthController extends Controller
     function biodataUser(){
         $user = Session::get('user-javis');
         
-        $data = UserBiodata::where('username',$user)->first();
-        
-        $alamat = UserAlamat::where('id_user_biodata',$data->id_user_biodata)->first();
-
-        return view('user.user_profile',compact('data','alamat'));
+        $data = UserBiodata::where('username',$user)
+        ->join('tb_user_biodata_alamat','tb_user_biodata_alamat.id_user_biodata','=','tb_user_biodata.id_user_biodata')
+        ->first();
+        return view('user.user_profile',compact('data'));
     }
+
+
     function biodataUserAdd(Request $request){
         // dd($request);
         DB::table('tb_user_biodata')->where('id_user_biodata', $request->id_user_biodata)
@@ -94,10 +95,12 @@ class AuthController extends Controller
         Session::put('nama-user-javis', $request->nama);
         return redirect('/biodata')->with('notice','2');
     }
+
+
     function userSetting(){
-        
         return view('user.index');
-    } 
+    }
+
     function editFoto(){
         $user = Session::get('user-javis');
         $data = UserBiodata::where('username',$user)->first();
@@ -118,6 +121,23 @@ class AuthController extends Controller
             ]);
         }
         return redirect('/biodata')->with('notice','1');
+    }
+
+    function editPasswordEdit(Request $request){
+        $user = Session::get('user-javis');
+        if($request->password!=$request->confirm_password){
+            return redirect('/biodata')->with('notif',['warning','Gagal Konfirmasi Password Tidak Sama']);
+        }
+        $stat = UserAkun::where('username', $user)->first();
+        if(Hash::check($request->old_password, $stat->password)){
+            UserAkun::where('username',$user)->update([
+                'password' => password_hash($request->password, PASSWORD_DEFAULT),
+            ]);  
+            Session::put('user-javis', $user);
+            return redirect('/biodata')->with('notif',['success','Berhasil Mengganti Password']);
+        }else{
+            return redirect('/biodata')->with('notif',['warning','Gagal Mengganti Password']);
+        }
     }
     
 }

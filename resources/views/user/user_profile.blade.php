@@ -28,6 +28,35 @@
             
           </div>
         </div>
+        <div class="card card-small mb-4 pt-3">
+          <div class="card-header border-bottom text-center">
+            <div class="mb-3 mx-auto">
+              <label for="userProfilePicture" class="text-center w-100 mb-4">Edit Password</label>
+              <form action="{{url('edit-password')}}" method="POST" >
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="nama">Password Lama</label>
+                    <input type="password" class="form-control" placeholder="Password Lama" name="old_password" value="" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="nama">Password Baru</label>
+                    <input type="password" class="form-control" placeholder="Password Baru" name="password" value="" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="nama">Konfirmasi Password Baru</label>
+                    <input type="password" class="form-control" placeholder="Konfirmasi Password Baru" name="confirm_password" value="" required>
+                  </div>
+                </div>
+                <button type="buttom" class="btn btn-accent">Update Password</button>
+                @csrf
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-8">
         <div class="card card-small mb-4">
@@ -73,7 +102,7 @@
                     <div class="form-row">
                       <div class="form-group col-md-12">
                         <label for="alamat">Alamat Lengkap</label>
-                        <textarea class="form-control" rows="5" name="alamat" placeholder="Nama Jalan, Gang, No. Rumah, Patokan dll" required>{{ $alamat->alamat }}</textarea>
+                        <textarea class="form-control" rows="5" name="alamat" placeholder="Nama Jalan, Gang, No. Rumah, Patokan dll" required>{{ $data->alamat }}</textarea>
                       </div>
                     </div>
                     
@@ -87,10 +116,10 @@
                           <div id="map"></div>
                           <table id="address">
                             <tr>
-                            <td class="wideField" colspan="3"><input class="text" id="lat" name="lat" value="{{ $alamat->lat }}" hidden/></td>
+                            <td class="wideField" colspan="3"><input class="text" id="lat" name="lat" value="{{ $data->lat }}" hidden/></td>
                             </tr>
                             <tr>
-                              <td class="wideField" colspan="3"><input class="text" id="lng" name="lng" value="{{ $alamat->lng }}" hidden/></td>
+                              <td class="wideField" colspan="3"><input class="text" id="lng" name="lng" value="{{ $data->lng }}" hidden/></td>
                             </tr>
                           </table>
                         </div>
@@ -224,6 +253,17 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZkuHiUXYr2MnjteerrkucCJ8
 	}
 	@endif
 }
+@endif
+@if(Session::has('notif')){
+		<script>
+			swal({
+				title : "{{session('notif')[1]}}",
+				text : "",
+				icon : "{{session('notif')[0]}}",
+				button : "Ok!",
+			});	
+		</script>
+	}
 @endif
 
 @if(Session::has('notice')){
