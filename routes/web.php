@@ -52,7 +52,10 @@ Route::post('/pesan-servis','OrderController@index');
 Route::get('/pesan-servis/{id}','OrderController@pesanServis');
 Route::post('/setLokasiPenjemputan','OrderController@setLokasiPenjemputan');
 
-
+Route::get('/forgot-password','AuthController@gotoForgotPassword');
+Route::post('forgot-password-send','AuthController@forgotPassword');
+Route::get('forgot-password/{code}','AuthController@gotoForgotPasswordConfirm');
+Route::post('update/forgot-password','AuthController@getCodeForgotPassword');
 //method
 Route::get('/getType/{id}', 'MethodController@getType');
 //method admin

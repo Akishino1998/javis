@@ -30,22 +30,13 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST" action="/login">
+				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST" action="{{url('forgot-password-send')}}">
 					<span class="login100-form-title">
-						LOGIN JAVIS
+						LUPA PASSWORD JAVIS
 						<p style="color:black;font-size:15px">Aplikasi pemesanan jasa servis gadget antar jemput.</p>
 					</span>
-					
-					<div class="wrap-input100 validate-input m-b-16" >
-						<center><h6 >Belum Punya Akun? <a href="/register" class="txt3">Klik Di Sini</a></h6></center>
-					</div>
-					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" type="text" name="username" placeholder="Contoh : ekojavis">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="password" placeholder="Password Anda">
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="email" name="email" placeholder="Email" required>
 						<span class="focus-input100"></span>
 					</div>
 
@@ -55,17 +46,9 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							LOGIN
+							Send To Email
 						</button>
 					</div>
-					<div class="text-right p-t-13 p-b-23">
-						<center>
-							<a href="{{url('forgot-password')}}" class="txt2">
-							Lupa Password?
-							</a>
-						</center>
-					</div>
-					
 					@csrf
 				</form>
 			</div>
@@ -93,15 +76,12 @@
 
 </body>
 </html>
-@if (Session::has('alert'))
-	@if (Session::get('alert') == 1)
-		<script>
-		swal({
-			title : "Username/Password Salah!",
-			text : "Apa yang anda masukkan salah :(",
-			icon : "error",
-			button : "Ok!",
-		});	
-		</script>
-	@endif
+@if (Session::has('forgot_password'))
+	<script>
+	swal({
+		title : "{{Session::get('forgot_password')[1]}}",
+		icon : "{{Session::get('forgot_password')[0]}}",
+		button : "Ok!",
+	});	
+	</script>
 @endif

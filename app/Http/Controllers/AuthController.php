@@ -9,7 +9,7 @@ use App\UserAlamat;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Mail;
 
 class AuthController extends Controller
 {
@@ -67,6 +67,58 @@ class AuthController extends Controller
         return $request;
         
     }
+    function forgotPassword(Request $request){
+        $email = $request->email;
+        $stat = UserBiodata::where('email', $email)->first();
+        $code=md5(uniqid(mt_rand(), true));
+        if($stat){
+            $data=[
+                'name'=>$stat->nama,
+                'email'=>$stat->email,
+                'code'=>$code
+            ];
+            $to_name = $data['name'];
+            $to_email = $data['email'];
+            $data = array('url'=>url('/').'/forgot-password/'.$data['code']);
+            Mail::send('mail_forgot_password', $data, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)
+                ->subject('Forgot Password Javis');
+                $message->from('noreplay@javis.id','Noreplay Javis');
+            });
+            UserAkun::where('username',$stat->username)->update([
+                'forgot_password' => $code,
+            ]); 
+            
+            return redirect()->back()->with('forgot_password',['success','Silahkan Cek Email Anda !!!']);
+        }else{
+            return redirect()->back()->with('forgot_password',['warning','Email Anda Belum Terdaftar Silahkan Daftar atau Hubungi Admin']);
+        }
+    }
+
+    function gotoForgotPassword(){
+        return view('forgot_password_email');
+    }
+
+    function gotoForgotPasswordConfirm($code){
+        return view('forgot_password');
+    }
+
+    function getCodeForgotPassword(Request $request){
+        if($request->password!=$request->confirm_password){
+            return redirect()->back()->with('notif',['warning','Gagal Konfirmasi Password Tidak Sama']);
+        }
+        $stat = UserAkun::where('forgot_password', $request->code)->first();
+        if($stat){
+            UserAkun::where('username',$stat->username)->update([
+                'password' => password_hash($request->password, PASSWORD_DEFAULT),
+                'forgot_password'=>''
+            ]);
+            return redirect('/home')->with('notif',['success','Berhasil Mengganti Password']);
+        }else{
+            return redirect('/home')->with('notif',['warning','Gagal Mengganti Password']);
+        }
+    }
+
     function biodataUser(){
         $user = Session::get('user-javis');
         

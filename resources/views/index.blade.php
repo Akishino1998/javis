@@ -468,6 +468,16 @@ $('.autoplay').slick({
 		@endif
 	}
 	@endif
+	@if(Session::has('notif')){
+		<script>
+			swal({
+				title : "{{Session::get('notif')[1]}}",
+				text : "",
+				icon : "{{Session::get('notif')[0]}}",
+				button : "Ok!",
+			});	
+		</script>
+	@endif
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 
