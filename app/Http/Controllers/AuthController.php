@@ -30,9 +30,12 @@ class AuthController extends Controller
                 if($biodata){
                     $nama=$biodata->nama==NULL?$user->username:$biodata->nama;
                 }
+                $foto=$biodata->foto;
                 Session::put('nama-user-javis', $nama);
                 $_SESSION["nama-user-javis"] = $nama;
-                // return $_SESSION["user-javis"];
+                Session::put('foto', $foto);
+                $_SESSION["foto"] = $foto;
+                // dd(Session::get('nama-user-javis'));
                 return redirect('/home');
             } else {
                 // echo "password salah";
