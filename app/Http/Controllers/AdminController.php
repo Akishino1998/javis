@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use App\HargaServisHP;
+use App\RefHargaServis;;
 use App\RefElektronik;
 use App\RefMerk;
 use App\RefType;
@@ -16,21 +16,22 @@ use App\AdminUser;
 use App\UserElektronik;
 
 use App\ServisMasuk;
+use App\UserAkun;
+use App\UserBiodata;
+
 class AdminController extends Controller
 {
     function index(){
+        // return ServisMasuk::all()->first()->KelengkapanUnit;
         $servisMasuk = ServisMasuk::all()->where('status','<','4')->COUNT();
         return view('admin.index', compact("servisMasuk"));
     }
-    function servis_masuk(){
-        $data = DB::select("SELECT * FROM tb_servis_masuk, tb_user_elektronik, ref_detail_merk, ref_merk, ref_elektronik, ref_kerusakan, tb_alamat_jemput
-        WHERE tb_servis_masuk.id_user_elektronik = tb_user_elektronik.id_user_elektronik 
-        AND ref_detail_merk.id_detail_merk = tb_user_elektronik.id_detail_merk
-        AND ref_merk.id_merk = ref_detail_merk.id_merk
-        AND ref_elektronik.id_ref_elektronik = ref_merk.id_ref_elektronik
-        AND ref_kerusakan.id_ref_kerusakan = tb_servis_masuk.id_ref_kerusakan
-        AND tb_alamat_jemput.id_servis_masuk = tb_servis_masuk.id_servis_masuk");
-        return view('admin.servisMasuk', compact('data'));
+    function servis_masuk(){ 
+
+        $user = UserAkun::all();
+        $data = ServisMasuk::all();
+        // return $user->where('username','admin')->first()->UserBiodata->nama;
+        return view('admin.servisMasuk', compact('data','user'));
     }
     function login(){
         
@@ -65,39 +66,46 @@ class AdminController extends Controller
      
     function daftar_harga(){
         $refElektronik = RefElektronik::all();
-        $refDistributor = RefDistributor::all();
-        $data = DB::select('SELECT tb_admin.username,tb_admin.nama,ref_distributor.id_distributor , id_ref_harga,ref_harga_servis.id_ref_kerusakan, ref_elektronik.id_ref_elektronik, ref_merk.id_merk, ref_harga_servis.id_detail_merk, jenis_elektronik, nama_merk, ref_detail_merk.`type`, ref_kerusakan.jenis_kerusakan, ref_harga_servis.harga_sparepart, ref_distributor.nama_distributor, ref_harga_servis.total_harga, ref_harga_servis.garansi_hari, ref_harga_servis.lama_perbaikan_hari, ref_harga_servis.foto
-FROM ref_elektronik, ref_merk, ref_detail_merk, ref_kerusakan, ref_harga_servis, ref_distributor, tb_admin
-WHERE ref_elektronik.id_ref_elektronik = ref_merk.id_ref_elektronik 
-AND ref_merk.id_merk = ref_detail_merk.id_merk
-AND  ref_detail_merk.id_detail_merk = ref_harga_servis.id_detail_merk
-AND ref_kerusakan.id_ref_kerusakan = ref_harga_servis.id_ref_kerusakan
-AND ref_harga_servis.id_distributor = ref_distributor.id_distributor 
-AND ref_harga_servis.username = tb_admin.username ');
-        return view('admin.daftar_harga', compact('data','refElektronik','refDistributor'));
+        $data = RefHargaServis::all();
+        // $tes = RefType::all();
+        // return $tes->find(1012)->RefHargaServis;
+        return view('admin.daftar_harga', compact('data','refElektronik'));
     }
     function daftarHargaFilterElektronik($id_elektronik){
         $id_elektronik = $id_elektronik;
         $refElektronik = RefElektronik::all();
-        $refDistributor = RefDistributor::all();
-        $data = DB::select('SELECT tb_admin.username,tb_admin.nama,ref_distributor.id_distributor , id_ref_harga,ref_harga_servis.id_ref_kerusakan, ref_elektronik.id_ref_elektronik, ref_merk.id_merk, ref_harga_servis.id_detail_merk, jenis_elektronik, nama_merk, ref_detail_merk.`type`, ref_kerusakan.jenis_kerusakan, ref_harga_servis.harga_sparepart, ref_distributor.nama_distributor, ref_harga_servis.total_harga, ref_harga_servis.garansi_hari, ref_harga_servis.lama_perbaikan_hari, ref_harga_servis.foto
-        FROM ref_elektronik, ref_merk, ref_detail_merk, ref_kerusakan, ref_harga_servis, ref_distributor, tb_admin
-        WHERE ref_elektronik.id_ref_elektronik = ref_merk.id_ref_elektronik 
-        AND ref_merk.id_merk = ref_detail_merk.id_merk
-        AND  ref_detail_merk.id_detail_merk = ref_harga_servis.id_detail_merk
-        AND ref_kerusakan.id_ref_kerusakan = ref_harga_servis.id_ref_kerusakan
-        AND ref_harga_servis.id_distributor = ref_distributor.id_distributor 
-        AND ref_harga_servis.username = tb_admin.username
-AND ref_elektronik.id_ref_elektronik ='.$id_elektronik);
-        return view('admin.daftar_harga_detail', compact('data','refElektronik','id_elektronik','refDistributor'));
+        $data = RefHargaServis::all();
+        return view('admin.daftar_harga_detail', compact('data','refElektronik','id_elektronik'));
     }
     function tambahDataHargaServis(){
         $refElektronik = RefElektronik::all();
         $refMerk = RefMerk::all();
         $refType = RefType::all();
         $RefKerusakan = RefKerusakan::all();
-        $refDistributor = RefDistributor::all();
-        return view('admin.addHarga', compact('refElektronik','refMerk','refType','RefKerusakan','refDistributor'));
+        return view('admin.addHarga', compact('refElektronik','refMerk','refType','RefKerusakan'));
     } 
+
+    function addPelanggan(){
+        return view('admin.addPelanggan');
+    }
+    function checkUsernameUser(Request $request){
+        $user = UserAkun::all()->where('username',$request->username)->COUNT();
+        return $user;
+    }
+    function addUsername(Request $request){
+        // return password_hash($request->password, PASSWORD_DEFAULT);
+        $user = new UserAkun;
+        $user->username = $request->username;
+        $user->password = password_hash($request->password, PASSWORD_DEFAULT);
+        $user->save();
+        
+        $userBiodata = UserBiodata::where('username', $request->username)->first();
+        $userBiodata->nama = $request->nama;
+        $userBiodata->no_hp = $request->no_hp;
+        $userBiodata->email = $request->email;
+        $userBiodata->alamat = $request->alamat;
+        $userBiodata->save();
+        return redirect("/admin/servis-masuk")->with('status','inputServis');
+    }
 
 }

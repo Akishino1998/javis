@@ -49,7 +49,7 @@
                                       <div class="row">
                                         <div class="col-10">
                                           <label>Tipe</label>
-                                          <select id="inputState"  class="form-control inputTipe" name="id_detail_ref">
+                                          <select id="inputState"  class="form-control inputTipe" name="id_detail_merk">
                                             <option value="1">---Pilih Tipe Dulu---</option>
                                           </select>
                                         </div>
@@ -73,7 +73,7 @@
                                 <div class="form-group col-4">
                                   <label>Garansi</label>
                                   <div class="input-group mb-3">
-                                    <input type="text" class="form-control garansi" value="7" name="garansi" id="garansi" disabled>
+                                    <input type="text" class="form-control garansi" value="7" name="garansi_hari" id="garansi" disabled>
                                     <div class="input-group-append">
                                       <span class="input-group-text">Hari</span>
                                     </div>
@@ -91,16 +91,7 @@
                               </div>
                               <div class="row">
                                 <div class="form-group col-4">
-                                  <label>Harga Sparepart</label>
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text">Rp</span>
-                                    </div>
-                                    <input type="text" class="form-control harga_sparepart" name="harga_sparepart" id="harga_sparepart"> 
-                                  </div>
-                                </div>
-                                <div class="form-group col-4">
-                                    <label>Harga User</label>
+                                    <label>Harga</label>
                                     <div class="input-group mb-3">
                                       <div class="input-group-prepend">
                                         <span class="input-group-text">Rp</span>
@@ -108,15 +99,6 @@
                                       <input type="text" class="form-control total_harga" name="total_harga" id="total_harga"> 
                                     </div>
                                   </div>
-                                <div class="form-group col-4">
-                                  <label>Distributor</label>
-                                  <select id="inputState" class="form-control" name="id_distributor" id="id_distributor">
-                                    <option value="1">---Pilih Distributor---</option>
-                                    @foreach ($refDistributor as $item)
-                                        <option value="{{ $item->id_distributor }}">{{ $item->nama_distributor }}</option>
-                                    @endforeach
-                                  </select>
-                                </div> 
                               </div>
                               <div class="row">
                                   <div class="col-12">
@@ -171,7 +153,7 @@ $(".inputTipe").change(function(){
   $('#addkerusakan').removeAttr('hidden');
 });
 
-function setKerusakan(){
+function setKerusakan(){ 
   $id = $('.inputTipe').val();
 	$.get('/getKerusakan/'+$id, function(data){
 		$(".inputKerusakan").empty();

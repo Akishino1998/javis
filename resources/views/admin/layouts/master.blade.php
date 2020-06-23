@@ -32,8 +32,8 @@ if (session_status() == PHP_SESSION_NONE) {
             <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
               <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
                 <div class="d-table m-auto">
-                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="images/shards-dashboards-logo.svg" alt="Shards Dashboard">
-                  <span class="d-none d-md-inline ml-1">Shards Dashboard</span>
+                  {{-- <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="images/shards-dashboards-logo.svg" alt="Shards Dashboard"> --}}
+                  <span class="d-none d-md-inline ml-1">Dashboard</span>
                 </div>
               </a>
               <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -54,7 +54,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <h6 class="main-sidebar__nav-title">Data Servis</h6>
             <ul class="nav nav--no-borders flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/daftar-harga">
+                <a class="nav-link" href="/admin/daftar-harga">
                   {{-- <i class="fa fa-sign-in" aria-hidden="true"></i> --}}
                   <span>Daftar Harga Servis</span>
                 </a>

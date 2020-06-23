@@ -39,9 +39,11 @@ Route::get('/servisku','UserController@servis');
 
 
 //home 
+Route::get('/home','HomeController@index');
+Route::get('/testi','HomeController@testi');
 Route::get('/daftar-servis','HomeController@daftarServis');
 Route::get('/cari-servis','HomeController@cariServis');
-Route::get('/home','HomeController@index');
+
 Route::get('/servis/{id}','HomeController@servis');
 Route::post('/servis','HomeController@servisMasuk');
 Route::get('/detail-servis','HomeController@detailServis');
@@ -91,4 +93,8 @@ Route::get('/admin/inputKerusakan/{kerusakan}','InputDataController@inputKerusak
 Route::post('/admin/inputKerusakan','InputDataController@inputHarga');
 Route::post('/admin/updateData','InputDataController@updateData');
 Route::get('/admin/deleteData/{id}','InputDataController@deleteData');
- 
+
+//add pelanggan
+Route::get('/tambah-pelanggan','AdminController@addPelanggan');
+Route::post('/checkUsernameUser','AdminController@checkUsernameUser');
+Route::post('/addUsername','AdminController@addUsername');

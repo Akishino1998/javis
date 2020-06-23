@@ -7,7 +7,6 @@
         margin-top: 14px;
     }
 </style>
-@foreach ($datas as $data)
 <section class="welcome_area p_120">
     <div class="container">
         <div class="row welcome_inner">
@@ -18,7 +17,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="welcome_text">
-                    <h4>{{ $data->nama_merk }} {{ $data->type }} - {{ $data->jenis_kerusakan }}</h4>
+                    <h4>{{ $data->RefType->RefMerk->nama_merk }} {{ $data->RefType->type }} - {{ $data->RefKerusakan->jenis_kerusakan }}</h4>
                     <p>{{ $data->deskripsi }}</p>
                     <div class="row">
                         <div class="col-sm-4">  
@@ -98,7 +97,6 @@
         {{-- <p class="ab_single_text">inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed. inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed. inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed. inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p> --}}
     </div>
 </section>
-@endforeach
 		
 		    
 

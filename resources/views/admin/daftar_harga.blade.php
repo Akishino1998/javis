@@ -38,7 +38,7 @@
                 <div class="col">
                   <div class="card card-small mb-4">
                     <div class="card-header border-bottom">
-                      <h6 class="m-0">Active Users</h6>
+                      <h6 class="m-0">Daftar Harga</h6>
                     </div>
                     <div class="card-body p-0">
                       <table class="table mb-0" id="table_harga">
@@ -48,10 +48,6 @@
                             <th scope="col" class="border-0">Merk</th>
                             <th scope="col" class="border-0">Type</th>
                             <th scope="col" class="border-0">Kerusakan</th>
-                            @if (Session::get('level') == 1 or Session::get('level')==2)
-                              <th scope="col" class="border-0">Harga Part</th>
-                              <th scope="col" class="border-0">Distributor</th>
-                            @endif 
                             <th scope="col" class="border-0">Harga</th>
                             <th scope="col" class="border-0">Garansi (Hari)</th>
                             
@@ -61,14 +57,10 @@
                         <tbody class="text-center">
                           @foreach ($data as $item)
                               <tr>
-                                  <td>{{ $item->jenis_elektronik }}</td>
-                                  <td>{{ $item->nama_merk }}</td>
-                                  <td>{{ $item->type }}</td>
-                                  <td>{{ $item->jenis_kerusakan }}</td>
-                                  @if (Session::get('level') == "1" or Session::get('level')=="2")
-                                    <td data-mask="Rp. 000.000.000">{{ $item->harga_sparepart }}</td>
-                                    <td>{{ $item->nama_distributor }}</td>
-                                  @endif
+                                  <td>{{ $item->RefType->RefMerk->RefElektronik->jenis_elektronik }}</td>
+                                  <td>{{ $item->RefType->RefMerk->nama_merk }}</td>
+                                  <td>{{ $item->RefType->type }}</td>
+                                  <td>{{ $item->RefKerusakan->jenis_kerusakan }}</td>
                                   <td data-mask="Rp. 000.000.000">{{ $item->total_harga }}</td>
                                   <td>{{ $item->garansi_hari }}</td>
                                   <td class="file-manager__item-actions">
@@ -82,13 +74,12 @@
                                         
                                               <!-- Modal Header -->
                                               <div class="modal-header">
-                                                <h4 class="modal-title">{{ $item->nama_merk }} {{ $item->type }} - {{ $item->jenis_kerusakan }}</h4>
+                                                <h4 class="modal-title">{{ $item->RefType->RefMerk->nama_merk }} {{ $item->RefType->type }} - {{ $item->RefKerusakan->jenis_kerusakan }}</h4>
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                               </div>
                                         
                                               <!-- Modal body -->
                                               <div class="modal-body">
-                                                <p>Pelaku Input : {{ $item->nama }} ({{ $item->username }})</p>
                                                 <img src="{{ asset('foto-produk') }}/{{ $item->foto }}" alt="" height="300">
                                               </div>
                                         
@@ -99,12 +90,12 @@
                                             </div>
                                           </div>
                                         </div>
-                                      <button type="button" class="btn btn-white active-light" data-toggle="modal" data-target="#myModal2{{ $item->id_ref_harga }}">
+                                      <button type="button" class="btn btn-white active-light" data-toggle="modal" data-target="#myModalEdit{{ $item->id_ref_harga }}">
                                         <i class="material-icons"></i>
                                       </button>
 
                                       <form action="/admin/updateData" method="POST" enctype="multipart/form-data" >
-                                        <div class="modal" id="myModal2{{ $item->id_ref_harga }}">
+                                        <div class="modal" id="myModalEdit{{ $item->id_ref_harga }}">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                         
@@ -117,25 +108,14 @@
                                         
                                               <!-- Modal body -->
                                               <div class="modal-body">
-                                              <h4>{{ $item->nama_merk }} - {{ $item->type }} - {{ $item->jenis_kerusakan }} </h4>
+                                              <h4>{{ $item->RefType->RefMerk->nama_merk }} - {{ $item->RefType->type }} - {{ $item->RefKerusakan->jenis_kerusakan }} </h4>
                                                   <table >
                                                     <tr>
                                                       <th>Harga Sparepart</th>
                                                       <td>:</td>
-                                                      <td><input type="text" name="harga_part" id="harga_part" class="form-control" value="{{ $item->harga_sparepart }}"></td>
+                                                      <td><input type="text" name="harga_part" id="harga_part" class="form-control" value="{{ $item->total_harga }}"></td>
                                                     </tr>
-                                                    <tr>
-                                                      <th>Distributor</th>
-                                                      <td>:</td>
-                                                      <td>
-                                                        <select id="inputState" class="form-control" name="id_distributor" id="id_distributor">
-                                                          <option value="{{ $item->id_distributor }}">{{ $item->nama_distributor  }}</option>
-                                                          @foreach ($refDistributor as $items)
-                                                              <option value="{{ $items->id_distributor }}">{{ $items->nama_distributor }}</option>
-                                                          @endforeach
-                                                        </select>
-                                                      </td>
-                                                    </tr>
+                                                    
                                                     <tr>
                                                       <th>Garansi</th>
                                                       <td>:</td>
@@ -149,10 +129,10 @@
                                                     <tr>
                                                       <th>Foto</th>
                                                       <td>:</td>
-                                                      <td><input type="file" name="foto" id="foto" class="form-control" value="{{ $item->total_harga }}"></td>
+                                                      <td><input type="file" name="foto" id="foto" class="form-control"></td>
                                                     </tr>
                                                   </table>
-                                                
+                                                  <input type="text" value="{{ $item->foto }}" name="old_foto" hidden>
                                               </div>
                                               <input type="text" name="id_ref_harga" id="id_ref_harga" class="form-control" value="{{ $item->id_ref_harga }}" hidden>
                                               <!-- Modal footer -->

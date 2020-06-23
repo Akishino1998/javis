@@ -50,7 +50,7 @@ if (session_status() == PHP_SESSION_NONE) {
 							<ul class="nav navbar-nav menu_nav justify-content-center">
 								<li class="nav-item active"><a class="nav-link" href="\home">Home</a></li> 
 								<li class="nav-item"><a class="nav-link" href="\daftar-servis">Jasa Servis</a>
-								<li class="nav-item"><a class="nav-link" href="\testimoni">Testimoni</a>
+								<li class="nav-item"><a class="nav-link" href="\testi">Testimoni</a>
 								<li class="nav-item"><a class="nav-link" href="\kontak">Kontak Kami </a>
 							</ul>
 							<div class="input-group" style="width:400px;">

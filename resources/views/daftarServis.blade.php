@@ -29,9 +29,9 @@
 											ribuan 	= reverse.match(/\d{1,3}/g);
 											ribuan	= ribuan.join('.').split('').reverse().join('');
 										</script>
-										<div class="text-harga2">{{ $item->nama_merk }} {{ $item->type }}</div>
+										<div class="text-harga2">{{ $item->RefType->RefMerk->nama_merk }} {{ $item->RefType->type }}</div>
 										<div class="textpart2">Rp. <script>document.write(ribuan);</script></div>
-										<div class="textmerk2">{{ $item->jenis_kerusakan }}</div>
+										<div class="textmerk2">{{ $item->RefKerusakan->jenis_kerusakan }}</div>
 									</div>
 								</a>
 							</div>

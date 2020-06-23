@@ -117,7 +117,7 @@
 									
 										<div class="card  text-white card-banner">
 											<img class="card-img img " src="{{ asset('foto-produk/') }}/{{$item->foto}}" alt="Card image" >
-											<h5 class="card-title wishlist"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></h5>
+											{{-- <h5 class="card-title wishlist"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></h5> --}}
 											<a href="/iklan/{{ $item->id_ref_harga}}"><div class="card-img-overlay">
 												
 												<script>
@@ -128,8 +128,8 @@
 												</script>
 												<h5 class="card-title ">Rp. <script>document.write(ribuan);</script></h5>
 												
-												<h5 class="card-text">{{ $item->jenis_kerusakan }}</h5>
-												<h5 class="card-text">{{ $item->nama_merk }} {{ $item->type }}</h5>
+												<h5 class="card-text">{{ $item->RefKerusakan->jenis_kerusakan }}</h5>
+												<h5 class="card-text">{{ $item->RefType->RefMerk->nama_merk }} {{ $item->RefType->type }}</h5>
 											</div></a>
 										</div>
 									
@@ -190,7 +190,7 @@
 																ribuan	= ribuan.join('.').split('').reverse().join('');
 															</script>
 															<div class="media-body">
-																<h3 >{{ $item->jenis_kerusakan }} {{ $item->nama_merk }} {{ $item->type }}</a>
+																<h3 >{{ $item->RefKerusakan->jenis_kerusakan }} {{ $item->RefType->RefMerk->nama_merk }} {{ $item->RefType->type }}</a>
 																<p>Rp. <script>document.write(ribuan);</script></p>
 															</div>
 														</a>
@@ -234,8 +234,8 @@
 												ribuan	= ribuan.join('.').split('').reverse().join('');
 											</script>
 											<h5 class="card-title ">Rp. <script>document.write(ribuan);</script></h5>
-											<h5 class="card-text">{{ $item->jenis_kerusakan }}</h5>
-											<h5 class="card-text">{{ $item->nama_merk }} {{ $item->type }}</h5>
+											<h5 class="card-text">{{ $item->RefKerusakan->jenis_kerusakan }}</h5>
+											<h5 class="card-text">{{ $item->RefType->RefMerk->nama_merk }} {{ $item->RefType->type }}</h5>
 										</div>
 									</div>
 								</a>

@@ -54,7 +54,7 @@
                 <div id="mapBox1"></div>
                 
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <form class="row contact_form" action="\lokasi-jemput-antar" method="post" id="contactForm" novalidate="novalidate">
                                 <input type="hidden" name="latitude" id="latclicked" value="{{ $data_address->latitude }}" ><br>
                                 <input type="hidden" name="longtitude" id="longclicked" value="{{ $data_address->longtitude }}"><br>

@@ -57,20 +57,11 @@ class MethodController extends Controller
         return array_diff($array, (is_array($value) ? $value : array($value)));
       }
     function getKerusakan($id){
-        $refHargaServis = RefHargaServis::all()->where('id_detail_merk',$id);
+        $refHargaServis = RefHargaServis::all()->where('id_detail_merk',$id); 
         $RefKerusakan = RefKerusakan::all();
         $text = '<option value="1">---Pilih Kerusakan---</option>';
-        $option1 = [''];
-        $option2 = [''];
-        $i = 0;
-        foreach ($refHargaServis as $items) {
-            $option1[$i] = $items->id_ref_kerusakan;
-            $i++;
-        }
         foreach ($RefKerusakan as $items) {
-            if(!in_array($items->id_ref_kerusakan,$option1)){
-                $text = $text.'<option value="'.$items->id_ref_kerusakan.'">'.$items->jenis_kerusakan.'</option>	';
-            }
+            $text = $text.'<option value="'.$items->id_ref_kerusakan.'">'.$items->jenis_kerusakan.'</option>	';
         }
         
         
