@@ -28,6 +28,7 @@ Route::get('/register','AuthController@register');
 Route::post('/register','AuthController@registerProses');
 Route::get('/user-setting','AuthController@userSetting');
 Route::get('/biodata','AuthController@biodataUser');
+Route::get('/chat','UserController@chatUser');
 Route::POST('/biodata','AuthController@biodataUserAdd');
 Route::get('/edit-foto','AuthController@editFoto');
 Route::POST('/edit-foto','AuthController@editFotoAdd');
@@ -36,7 +37,9 @@ Route::POST('/edit-password','AuthController@editPasswordEdit');
 Route::get('/mygadget','AuthController@gadget');
 Route::get('/servisku','UserController@servis');
 
+Route::get('/chathtml/{id}', 'UserController@chathtml');
 
+Route::post('/chatinput','UserController@inputChat');
 
 //home 
 Route::get('/home','HomeController@index');
@@ -54,9 +57,13 @@ Route::post('/pesan-servis','OrderController@index');
 Route::get('/pesan-servis/{id}','OrderController@pesanServis');
 Route::post('/setLokasiPenjemputan','OrderController@setLokasiPenjemputan');
 
-
+Route::get('/forgot-password','AuthController@gotoForgotPassword');
+Route::post('forgot-password-send','AuthController@forgotPassword');
+Route::get('forgot-password/{code}','AuthController@gotoForgotPasswordConfirm');
+Route::post('update/forgot-password','AuthController@getCodeForgotPassword');
 //method
 Route::get('/getType/{id}', 'MethodController@getType');
+
 //method admin
 Route::get('/getMerk/{id}', 'MethodController@getMerk');
 Route::get('/getTipe/{id}','MethodController@getTipe');

@@ -74,7 +74,12 @@ if (session_status() == PHP_SESSION_NONE) {
                   <span>Data Device</span>
                 </a>
               </li>
-              
+              <li class="nav-item">
+                <a class="nav-link " href="/chat">
+                  <i class="material-icons">view_module</i>
+                  <span>Pesan</span>
+                </a>
+              </li>
             </ul>
             
           </div>
@@ -98,7 +103,7 @@ if (session_status() == PHP_SESSION_NONE) {
                       
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                          <img class="user-avatar rounded-circle mr-2" src="{{ asset('images/avatar/1.jpg') }}" alt="User Avatar">
+                          <img class="user-avatar rounded-circle mr-2" src="{{ asset('foto-profile') }}/{{  Session::get('foto') }}" alt="User Avatar">
                           <span class="d-none d-md-inline-block">{{  Session::get('nama-user-javis') }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-small">
@@ -143,6 +148,7 @@ if (session_status() == PHP_SESSION_NONE) {
         {{-- <script src="{{ asset('scripts/extras.1.1.0.min.js') }}"></script> --}}
         {{-- <script src="{{ asset('scripts/shards-dashboards.1.1.0.min.js') }}"></script> --}}
         <script src="{{ asset('scripts/app/app-blog-overview.1.1.0.js') }}"></script>
+        <script src="{{ asset('scripts/app/ajax.js') }}"></script>
       </body>
     </html>
 @yield('jquery')
